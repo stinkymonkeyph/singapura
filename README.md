@@ -11,7 +11,7 @@ Been using php frameworks lately and hell yeah, it's too mainstream. How about ?
 
 Develop a micro php fucking web framework, that doesn't come with unnecessary packages
 
-# Cliche
+# Cliché
 
 Reinventing the wheel ! Another piece of shit
 
