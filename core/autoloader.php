@@ -9,7 +9,8 @@ class Autoloader
 		
 		$paths = array(
 			'/../app/controller/' ,
-			'/../app/models/'
+			'/../app/models/',
+			'/../core/'
 		);
 
 		foreach($paths as $path)
@@ -18,7 +19,7 @@ class Autoloader
 			$trim_base_class = end($base_class);
 			$file = __DIR__ . $path . $trim_base_class . ".php" ; 
 			
-			if( file_exists( $file ) ) 
+			if( file_exists( $file )) 
 			{
 				require $file;
 			}

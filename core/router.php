@@ -2,11 +2,13 @@
 
 namespace Core;
 
-class Router()
+class Router
 {
-	public static function get_route($request_uri, $view)
+	private static $path ;
+	public static function get_route($uri)
 	{
-
+		$request_uri = explode('?', $uri, 2);
+		$path = $request_uri[0];
 	}
 }
 

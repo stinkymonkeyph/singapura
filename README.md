@@ -1,4 +1,4 @@
-# singapura
+# Singapura
 A micro php framework
 > <br>
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/who.jpg"></img>
