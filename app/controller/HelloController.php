@@ -1,17 +1,15 @@
 <?php 
 
+namespace App\Controller;
+
 class HelloController 
 {
 
-	public function hello_world()
+	public static function hello_world()
 	{
-
 		echo "hello world";
-
 	}
 
 }
-
-
 
 ?>

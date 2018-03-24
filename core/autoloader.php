@@ -1,9 +1,10 @@
 <?php 
 	
+	
+class Autoloader
+{
 
-	spl_autoload_register('autoload_register');
-
-	function autoload_register( $class_name ) 
+	public static function autoload_register( $class_name ) 
 	{
 		
 		$paths = array(
@@ -13,7 +14,9 @@
 
 		foreach($paths as $path)
 		{
-			$file = __DIR__ . $path . $class_name . ".php" ; 
+			$base_class = explode("\\", $class_name);
+			$trim_base_class = end($base_class);
+			$file = __DIR__ . $path . $trim_base_class . ".php" ; 
 			
 			if( file_exists( $file ) ) 
 			{
@@ -23,6 +26,10 @@
 		}
 	
 	}
+
+}
+
+spl_autoload_register('Autoloader::autoload_register');
 
 
 ?>
