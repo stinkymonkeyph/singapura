@@ -6,10 +6,8 @@ Been using php frameworks lately and hell yeah, it's too mainstream. How about ?
 
 # Project tree
 
-â”œâ”€â”€â”€app
-
-â”‚   â””â”€â”€â”€controller
-
-â”œâ”€â”€â”€core
-
-â””â”€â”€â”€public
+G:.
+ÃÄÄÄapp
+³   ÀÄÄÄcontroller
+ÃÄÄÄcore
+ÀÄÄÄpublic
