@@ -13,3 +13,8 @@ Been using php frameworks lately and hell yeah, it's too mainstream. How about ?
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/tree.JPG"></img>
 > <br>
 
+# Road-Map
+
+1. Routing
+2. View 
+3. Database Handler
