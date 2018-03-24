@@ -7,6 +7,6 @@ Been using php frameworks lately and hell yeah, it's too mainstream. How about ?
 # Project tree
 
 > <br>
-> <img height="300px" src="https://github.com/stinkymonkeyph/singapura/tree.JPG"></img>
+> <img height="300px" src="https://github.com/stinkymonkeyph/singapura/tree.jpg"></img>
 > <br>
 
