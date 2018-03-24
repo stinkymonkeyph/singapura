@@ -21,7 +21,6 @@ Reinventing the wheel ! Another piece of shit
 2. View 
 3. Database Handler
 
-
 # Project tree
 
 > <br>
