@@ -8,7 +8,7 @@ class Autoloader
 	{
 		
 		$paths = array(
-			'/../app/controller/' ,
+			'/../app/controller/',
 			'/../app/models/',
 			'/../core/'
 		);
@@ -23,7 +23,7 @@ class Autoloader
 			{
 				require $file;
 			}
-		
+			
 		}
 	
 	}

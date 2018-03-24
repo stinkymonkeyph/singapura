@@ -4,11 +4,17 @@ namespace Core;
 
 class Router
 {
-	private static $path ;
+	private static $path;
+
 	public static function get_route($uri)
 	{
 		$request_uri = explode('?', $uri, 2);
-		$path = $request_uri[0];
+		self::$path = $request_uri[0];	
+	}
+
+	public static function get_path()
+	{
+		return self::$path;	
 	}
 }
 
