@@ -9,11 +9,11 @@ Been using php frameworks lately and hell yeah, it's too mainstream. How about ?
 
 # Propositum
 
-Develop a micro php fucking web framework, that doesn't come with unecessary packages
+Develop a micro php fucking web framework, that doesn't come with unnecessary packages
 
 # Cliche
 
-Reinventing the wheel ! 
+Reinventing the wheel ! Another piece of shit
 
 # Road-Map
 
