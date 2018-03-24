@@ -29,18 +29,18 @@ Reinventing the wheel ! Another piece of shit
 
 ## current files as of today
 
-1. app
-...Contains the folders controller and model
+1. app.
+*Contains the folders controller and model
 
-2. core
-...cotains the core files of the framework
-...*autoloader
-...*router
+2. core.
+*cotains the core files of the framework
+**autoloader
+**router
 
-3. public
-...contains index.php
+3. public.
+*contains index.php
 
-4. views
-...will contain all view templates
+4. views.
+*will contain all view templates
 
 
