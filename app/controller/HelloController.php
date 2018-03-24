@@ -1,5 +1,9 @@
 <?php 
 
+/**
+	Sample Class
+**/
+
 namespace App\Controller;
 
 class HelloController 
