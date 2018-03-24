@@ -27,3 +27,20 @@ Reinventing the wheel ! Another piece of shit
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/tree.JPG"></img>
 > <br>
 
+## current files as of today
+
+1. app
+...Contains the folders controller and model
+
+2. core
+...cotains the core files of the framework
+...*autoloader
+...*router
+
+3. public
+...contains index.php
+
+4. views
+...will contain all view templates
+
+
