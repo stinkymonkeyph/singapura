@@ -27,7 +27,6 @@ class Router
 
 		if(self::$path == $path)
 		{
-
 			if(is_callable($method))
 			{
 				$method();
@@ -50,8 +49,6 @@ class Router
 
 	}
 			
-
-
 	private static function extract_class_function($class_function)
 	{
 		return explode('@', $class_function);
