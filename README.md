@@ -17,8 +17,7 @@ Reinventing the wheel ! Another piece of shit
 
 # TODO
 
-1. Template Engine
-2. Dependency Injection Support
+1. Add complex query support for the database handler
 
 # Project tree
 
@@ -43,5 +42,12 @@ Reinventing the wheel ! Another piece of shit
 
 4. views.
  	* will contain all view templates
+
+# Special Thanks
+
+> Adam Shaw for creating phpti, thank you for making template inheritance simplier
+> phpti - https://github.com/arshaw/phpti
+
+
 
 

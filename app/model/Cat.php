@@ -5,7 +5,7 @@ use Core\Database;
 
 class Cat extends Database
 {
-	public static $table = "Cat";
+	public const table = "Cat";
 }
 
 ?>

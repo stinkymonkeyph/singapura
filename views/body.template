@@ -1,0 +1,19 @@
+<?php include 'master.template' ?>
+
+<?php startblock('content') ?>
+
+	<p>Guess what I am a template</p>
+	<p> Name of all cats </p>
+	
+	<ul>
+	<?php foreach($cats as $cat): ?>
+		<li><?php echo $cat['name'] . '<br>' ; ?></li>
+	<?php endforeach ?>
+	</ul>
+	
+	<p> Name of filtered cats </p>
+	<?php foreach($cat_filtered as $cat): ?>
+		<?php echo $cat['name'] . '<br>' ; ?>
+	<?php endforeach ?>
+
+<?php endblock('content') ?>

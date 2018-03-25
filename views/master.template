@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Template</title>
+</head>
+<body>
+	<?php emptyblock('content') ?>
+</body>
+</html>

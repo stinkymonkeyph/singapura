@@ -11,21 +11,27 @@ class Database
 	private static $bind = array();
 	private static $query ;
 
+  public static function backtrace_caller()
+  {
+
+    return debug_print_backtrace();
+    //return $caller['class'];
+  }
+
 	private static function connect_db()
 	{
 		$conn = new DatabaseConnector();
 		self::$conn = $conn->db_handler();
 	}
 
-	
-  	public static function select($attributes = null)
-  	{
-  		self::connect_db();
+	public static function select($attributes = null)
+	{
+  		  self::connect_db();
 
-     	self::$query = "SELECT ";
+     	  self::$query = "SELECT ";
       	$counter = 0;
       	if($attributes === null)
-     	{
+     	  {
 	        self::$query = self::$query." * ";
       	}
         else
@@ -43,11 +49,21 @@ class Database
       	return new static;
 	}
 
-  	public static function from($table_name)
-  	{
- 	 	self::$query = self::$query." FROM ".$table_name;
+  public static function from($table_name = null)
+  {    
+        if($table_name != null)
+        {
+ 	 	      self::$query = self::$query." FROM ".$table_name;
+        }
+        else
+        {
+          list($childClass, $caller) = debug_backtrace(false, 2);
+          $backtrace_caller =  $caller['class'];
+          $table_name = $backtrace_caller::table;
+          self::$query = self::$query." FROM ".$table_name;
+        }
       	return new static;
-  	}
+  }
 
  	public static function where($key, $value)
   	{

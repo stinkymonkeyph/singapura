@@ -10,7 +10,8 @@ class Autoloader
 		$paths = array(
 			'/../app/controller/',
 			'/../app/model/',
-			'/../core/'
+			'/../core/',
+			'/../core/external/'
 		);
 
 		foreach($paths as $path)
