@@ -21,7 +21,7 @@ class Database
   	public static function select($attributes = null)
   	{
   		self::connect_db();
-
+  		
      	self::$query = "SELECT ";
       	$counter = 0;
       	if($attributes === null)

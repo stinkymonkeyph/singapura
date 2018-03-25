@@ -15,11 +15,9 @@ Develop a micro php fucking web framework, that doesn't come with unnecessary pa
 
 Reinventing the wheel ! Another piece of shit
 
-# Road-Map
+# TODO
 
-1. Routing
-2. View 
-3. Database Handler
+1. View 
 
 # Project tree
 
@@ -36,6 +34,8 @@ Reinventing the wheel ! Another piece of shit
 	 * cotains the core files of the framework
 	 	* autoloader
 	 	* router
+	 	* database handler
+	 	* config
 
 3. public.
  	* contains index.php
