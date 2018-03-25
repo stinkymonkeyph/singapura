@@ -7,7 +7,7 @@
 namespace App\Controller;
 
 use Core\Router;
-use Core\Database;
+use App\Model\Cat;
 
 class CatController
 {
@@ -15,7 +15,7 @@ class CatController
 	public static function hello_world()
 	{
 	
-		$result = Database::select()->from('cat')->get();
+		$result = Cat::select()->from(Cat::$table)->get();
 		foreach($result as $cat)
 		{
 			echo $cat['name'] . '<br>';

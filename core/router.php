@@ -27,7 +27,12 @@ class Router
 
 		if(self::$path == $path)
 		{
-			if(is_array($method))
+
+			if(is_callable($method))
+			{
+				$method();
+			}
+			else if(is_array($method))
 			{
 				$class_function = self::extract_class_function($method[0]);
 				$class =  self::append_controller_prefix($class_function[0]);
@@ -41,14 +46,11 @@ class Router
 				$function = $class_function[1];
 				self::execute_class_function($class, $function);
 			}
-			else
-			{
-				$method();
-			}
-
 		}
-			
+
 	}
+			
+
 
 	private static function extract_class_function($class_function)
 	{

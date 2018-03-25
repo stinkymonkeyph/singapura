@@ -9,7 +9,7 @@ class Autoloader
 		
 		$paths = array(
 			'/../app/controller/',
-			'/../app/models/',
+			'/../app/model/',
 			'/../core/'
 		);
 

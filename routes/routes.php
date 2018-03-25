@@ -8,5 +8,10 @@ use Core\Router as Route;
 
 Route::get('/devil', 'CatController@hello_world');
 
+Route::get('/angel', function()
+{
+	echo "Im an angel cat";
+});
+
 
 ?>
