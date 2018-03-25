@@ -17,9 +17,7 @@ include __DIR__.'/../routes/routes.php';
 /** 
 	Render Template
 **/
-
 Core\View::render_template();
-//Core\View::load_template_inheritance(); 
 
 
 ?>
