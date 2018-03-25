@@ -17,7 +17,8 @@ Reinventing the wheel ! Another piece of shit
 
 # TODO
 
-1. View 
+1. Template Engine
+2. Dependency Injection Support
 
 # Project tree
 
