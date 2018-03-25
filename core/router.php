@@ -29,10 +29,17 @@ class Router
 		{
 			if(is_array($method))
 			{
-				$class_function = explode('@', $method[0]);
-				$class_name = 'App\Controller\\'. $class_function[0];
+				$class_function = self::extract_class_function($method[0]);
+				$class =  self::append_controller_prefix($class_function[0]);
 				$function = $class_function[1];
-				$class_name::$function(); 
+				self::execute_class_function($class, $function);
+			}
+			else if(strpos($method, '@') !== false)
+			{
+				$class_function = self::extract_class_function($method);
+				$class = self::append_controller_prefix($class_function[0]);
+				$function = $class_function[1];
+				self::execute_class_function($class, $function);
 			}
 			else
 			{
@@ -41,6 +48,21 @@ class Router
 
 		}
 			
+	}
+
+	private static function extract_class_function($class_function)
+	{
+		return explode('@', $class_function);
+	}
+
+	private static function append_controller_prefix($class)
+	{
+		return 'App\Controller\\'. $class;
+	}
+
+	private static function execute_class_function($class, $function)
+	{
+		$class::$function(); 
 	}
 
 }

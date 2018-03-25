@@ -9,11 +9,12 @@ namespace App\Controller;
 use Core\Router;
 use Core\Database;
 
-class HelloController 
+class CatController
 {
 
 	public static function hello_world()
 	{
+	
 		$result = Database::select()->from('cat')->get();
 		foreach($result as $cat)
 		{

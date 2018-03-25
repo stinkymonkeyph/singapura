@@ -8,8 +8,8 @@ use PDO;
 class Database
 {
 	private static $conn;
-	protected static $bind = array();
-	protected static $query ;
+	private static $bind = array();
+	private static $query ;
 
 	private static function connect_db()
 	{
@@ -21,7 +21,7 @@ class Database
   	public static function select($attributes = null)
   	{
   		self::connect_db();
-  		
+
      	self::$query = "SELECT ";
       	$counter = 0;
       	if($attributes === null)
