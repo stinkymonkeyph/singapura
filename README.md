@@ -45,7 +45,7 @@ Reinventing the wheel ! Another piece of shit
 
 # Special Thanks
 
-> Adam Shaw for creating phpti, thank you for making template inheritance simplier
+> Adam Shaw for creating phpti, thank you for making template inheritance simplier <br>
 > phpti - https://github.com/arshaw/phpti
 
 
