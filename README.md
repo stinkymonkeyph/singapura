@@ -48,6 +48,12 @@ Reinventing the wheel ! Another piece of shit
 5. views.
  	* will contain all view templates
 
+6. engine 
+	* runs framework features using CLI
+		* run server
+		* creating controller
+		* creating model
+
  # Engine 
 
  1. Run PHP Server - using CLI
@@ -60,7 +66,10 @@ Reinventing the wheel ! Another piece of shit
 > **phpti** - https://github.com/arshaw/phpti
 
 
+# Inspiration
 
+> **Taylor Otwell** the man behind Laravel Framework
+> **Laravel** - https://github.com/laravel/laravel
 
 
 
