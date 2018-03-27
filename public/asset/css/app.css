@@ -18,12 +18,20 @@ body {
 	margin-top: -5px;
 }
 
+.head-love
+{
+	font-family: 'Work Sans', sans-serif;
+	font-size:15px;
+	text-align: center;
+	margin-top: -20px;
+}
+
 .head-description
 {
 	font-family: 'Work Sans', sans-serif;
 	font-size:20px;
 	text-align: center;
-	margin-top: -35px;
+	margin-top: -50px;
 }
 
 .head-body
@@ -41,9 +49,28 @@ body {
 	margin-top: -20px;
 }
 
+.body-code
+{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 15px;
+	width: 100%;
+}
+
+.code-container
+{
+	width:70%;
+	margin:0 auto;
+}
+
 .container
 {
 	margin:0 auto;
 	width: 95%;
 	min-height: 200px;
+}
+
+.link
+{
+	text-decoration:none;
+	color: #106de48f;
 }

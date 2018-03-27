@@ -10,14 +10,14 @@ require __DIR__.'/../core/autoloader.php';
 /**
 	Helper Class Comes with Handy Methods
 **/
-//require __DIR__.'/../core/helper.php';
 use Core\Helper;
 /**
 	Handle Request
 **/
+use Core\Router;
 
-Core\Router::parse_route($_SERVER['REQUEST_URI']);
-include __DIR__.'/../routes/routes.php';
+Router::parse_route($_SERVER['REQUEST_URI']);
+Router::load_routes();
 
 /** 
 	Render Template

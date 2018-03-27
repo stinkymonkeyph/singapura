@@ -11,17 +11,10 @@ class Database
 	private static $bind = array();
 	private static $query ;
 
-  public static function backtrace_caller()
-  {
-
-    return debug_print_backtrace();
-    //return $caller['class'];
-  }
-
 	private static function connect_db()
 	{
-		$conn = new DatabaseConnector();
-		self::$conn = $conn->db_handler();
+    		$conn = new DatabaseConnector();
+    		self::$conn = $conn->db_handler();
 	}
 
 	public static function select($attributes = null)
@@ -49,19 +42,10 @@ class Database
       	return new static;
 	}
 
-  public static function from($table_name = null)
+  public static function from($table_name)
   {    
-        if($table_name != null)
-        {
- 	 	      self::$query = self::$query." FROM ".$table_name;
-        }
-        else
-        {
-          list($childClass, $caller) = debug_backtrace(false, 2);
-          $backtrace_caller =  $caller['class'];
-          $table_name = $backtrace_caller::table;
-          self::$query = self::$query." FROM ".$table_name;
-        }
+        
+ 	 	    self::$query = self::$query." FROM ".$table_name;
       	return new static;
   }
 

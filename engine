@@ -1,5 +1,7 @@
 <?php 
 
+use Core\Maker;
+
 $function = $argv[1];
 
 if(count($argv) > 2)
@@ -17,5 +19,14 @@ function run_server($host_port)
 	exec('php -S '. $host_port );	
 }
 
+function create_controller($class_name)
+{
+	// create controller
+}
+
+function create_model()
+{
+	// create model
+}
 
 ?>

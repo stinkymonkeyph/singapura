@@ -48,6 +48,12 @@ Reinventing the wheel ! Another piece of shit
 5. views.
  	* will contain all view templates
 
+ # Engine 
+
+ 1 Run PHP Server - using CLI
+ 	* php engine run_server
+ 	* php engine run_server ip:port
+
 # Special Thanks
 
 > **Adam Shaw** for creating phpti, thank you for making template inheritance simplier <br>

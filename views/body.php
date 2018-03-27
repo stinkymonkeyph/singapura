@@ -8,6 +8,7 @@
 	<div class="container">
 		<p class="head-title">Singapura</p>
 		<p class="head-description"><b>A Micro PHP Web Framework</b></p>
+		<p class="head-love">Made with &#10084 from <a href="https://github.com/stinkymonkeyph/singapura" class="link"><b>github</b></a></p>
 		<center>
 			<img src="<?php Helper::link_asset('asset/image/who.jpg') ?>" class="singapura" />
 		</center>
@@ -19,5 +20,6 @@
 		<p class="head-body-description">
 			Reinventing the wheel ! Another piece of shit
 		</p>
+	
 	</div>
 <?php endblock('content') ?>
