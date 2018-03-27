@@ -13,7 +13,7 @@ use Core\Database as DB;
 
 class CatController
 {
-	public static function hello_world()
+	public static function list_cat()
 	{
 		
 		$all = DB::select()->from(Cat::table)->get();

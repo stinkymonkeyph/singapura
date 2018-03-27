@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>First Template</title>
+	<title><?php emptyblock('title') ?></title>
+	<?php include 'header.php' ?>
 </head>
 <body>
 	<?php emptyblock('content') ?>

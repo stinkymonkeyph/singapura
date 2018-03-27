@@ -8,6 +8,11 @@
 require __DIR__.'/../core/autoloader.php';
 
 /**
+	Helper Class Comes with Handy Methods
+**/
+//require __DIR__.'/../core/helper.php';
+use Core\Helper;
+/**
 	Handle Request
 **/
 

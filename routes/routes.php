@@ -7,11 +7,9 @@ use Core\View;
 	Declare all routes below
 **/
 
-Route::get('/devil', 'CatController@hello_world');
-
-Route::get('/angel', function()
+Route::get('/', function()
 {
-	View::render('master');
+	return View::render('body');
 });
 
 

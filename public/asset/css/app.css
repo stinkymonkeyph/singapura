@@ -1,0 +1,49 @@
+
+body {
+	background-color: whitesmoke;
+}
+
+.singapura 
+{
+	height:450px;
+	width:600px;
+	margin-top: 10px;
+}
+
+.head-title
+{
+	font-family: 'Anton', sans-serif;
+	font-size: 60px;
+	text-align: center;
+	margin-top: -5px;
+}
+
+.head-description
+{
+	font-family: 'Work Sans', sans-serif;
+	font-size:20px;
+	text-align: center;
+	margin-top: -35px;
+}
+
+.head-body
+{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 30px;
+	text-align: center;
+}
+
+.head-body-description
+{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	margin-top: -20px;
+}
+
+.container
+{
+	margin:0 auto;
+	width: 95%;
+	min-height: 200px;
+}

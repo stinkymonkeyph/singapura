@@ -1,0 +1,21 @@
+<?php 
+
+$function = $argv[1];
+
+if(count($argv) > 2)
+	$param = $argv[2];
+else
+	$param = null;
+
+$function($param);
+
+function run_server($host_port)
+{
+	if($host_port == null)
+		$host_port = "localhost:8000";
+	echo "\nListening on ".$host_port."\n" ;
+	exec('php -S '. $host_port );	
+}
+
+
+?>
