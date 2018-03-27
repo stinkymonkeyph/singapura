@@ -24,6 +24,7 @@ class View
 
 	private static function append_view_prefix($view_file)
 	{
+		$directory = str_replace('.', '/', $view_file);
 		return __DIR__.'/../views/'.$view_file.'.php';
 	}
 

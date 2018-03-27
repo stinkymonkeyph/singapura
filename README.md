@@ -4,8 +4,8 @@ A micro php framework
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/who.jpg"></img>
 > <br>
 
-## made for fun, made to learn, hell yeah
-Been using php frameworks lately and hell yeah, it's too mainstream. How about ? making our own and learning the shit out of these frameworks
+## made for fun, made to learn
+Been using php frameworks lately, it's too mainstream. How about ? making our own and learning the shit out of these frameworks
 
 # Propositum
 
