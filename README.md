@@ -50,7 +50,7 @@ Reinventing the wheel ! Another piece of shit
 
  # Engine 
 
- 1 Run PHP Server - using CLI
+ 1. Run PHP Server - using CLI
  	* php engine run_server
  	* php engine run_server ip:port
 
