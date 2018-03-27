@@ -24,7 +24,7 @@ function create_controller($class_name)
 	// create controller
 }
 
-function create_model()
+function create_model($class_name)
 {
 	// create model
 }

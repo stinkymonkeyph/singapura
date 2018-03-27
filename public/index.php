@@ -9,6 +9,7 @@ require __DIR__.'/../core/autoloader.php';
 
 /**
 	Helper Class Comes with Handy Methods
+	/core/helper.php
 **/
 use Core\Helper;
 /**
@@ -16,8 +17,8 @@ use Core\Helper;
 **/
 use Core\Router;
 
-Router::parse_route($_SERVER['REQUEST_URI']);
-Router::load_routes();
+Router::parse_route($_SERVER['REQUEST_URI']); //parse http request
+Router::load_routes(); //load user defined routes
 
 /** 
 	Render Template

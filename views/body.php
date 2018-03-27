@@ -20,6 +20,5 @@
 		<p class="head-body-description">
 			Reinventing the wheel ! Another piece of shit
 		</p>
-	
 	</div>
 <?php endblock('content') ?>

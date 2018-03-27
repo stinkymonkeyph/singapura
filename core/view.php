@@ -9,7 +9,6 @@ class View
 
 	public static function render($view_file, $data = null)
 	{
-
 		ob_start();
 		
 		if($data !== null)
