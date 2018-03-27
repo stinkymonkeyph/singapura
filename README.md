@@ -68,7 +68,7 @@ Reinventing the wheel ! Another piece of shit
 
 # Inspiration
 
-> **Taylor Otwell** the man behind Laravel Framework
+> **Taylor Otwell** the man behind Laravel Framework <br>
 > **Laravel** - https://github.com/laravel/laravel
 
 
