@@ -36,17 +36,24 @@ Reinventing the wheel ! Another piece of shit
 	 	* router
 	 	* database handler
 	 	* config
+	 * external folder
+	 	* contains external scripts/files from other author
 
 3. public.
  	* contains index.php
 
-4. views.
+4. routes
+	* contains routes.php
+
+5. views.
  	* will contain all view templates
 
 # Special Thanks
 
 > **Adam Shaw** for creating phpti, thank you for making template inheritance simplier <br>
 > **phpti** - https://github.com/arshaw/phpti
+
+
 
 
 
