@@ -25,7 +25,7 @@ Reinventing the wheel ! Another piece of shit
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/tree.JPG"></img>
 > <br>
 
-## current files as of today
+## Folder/Files
 
 1. app.
 	* Contains the folders controller and model
