@@ -61,7 +61,7 @@ Yes I'm reinventing the wheel, another piece of shit
  	* php engine run_server ip:port
 
 > <br>
-> <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/server_cli.JPG"></img>
+> <img height="300px" width="400px" src="https://github.com/stinkymonkeyph/singapura/blob/master/server_cli.JPG"></img>
 > <br>
 
 
