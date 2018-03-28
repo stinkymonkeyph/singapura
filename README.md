@@ -201,14 +201,14 @@ Yes I'm reinventing the wheel, another piece of shit
 	<?php endblock('content') ?>
   	```
 
-  	***index.php** code snippet, renders the template
+  	***index.php*** code snippet, renders the template
 
   	```php
   	<?php
 
   	...
   	// Render Template
-  	
+
 	Core\View::render_template();
   	...
 
