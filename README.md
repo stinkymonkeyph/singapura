@@ -63,7 +63,7 @@ Reinventing the wheel ! Another piece of shit
 
  # Manual
 
- 1. ***Configuration***
+ 1. ***Configuration*** <br>
  	located at - core/config.php <br>
  	here you set the database configuration for your application
  	```php
@@ -80,7 +80,7 @@ Reinventing the wheel ! Another piece of shit
 		  public static $dbms = "mysql"; //currently supports mysql
 	}
 
- 2. ***Routing***
+ 2. ***Routing*** <br>
  	located at - routes/routes.php <br>
  	```php
  	<?php
@@ -103,7 +103,7 @@ Reinventing the wheel ! Another piece of shit
 		return View::render('body');
 	});
 
-3. ***Controllers***
+3. ***Controllers*** <br>
 	located at - controller/your_controller
 	```php
 	<?php
