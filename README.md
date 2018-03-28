@@ -155,14 +155,14 @@ Yes I'm reinventing the wheel, another piece of shit
    Below is an example of a view structure <br>
    All files is located at /views
 
-   ***master.php*** - the base template
+   ***master.php*** - the base template, located at /views/layout
 
    ```html 
    <!DOCTYPE html>
 	<html>
 	<head>
 		<title><?php emptyblock('title') ?></title>
-		<?php include 'header.php' ?>
+		<?php include_template('header') ?>
 	</head>
 	<body>
 		<?php emptyblock('content') ?>
@@ -181,27 +181,27 @@ Yes I'm reinventing the wheel, another piece of shit
   	***body.php*** - includes the base template
 
   	```html
-  	<?php include 'master.php' ?>
+  	<?php extend_template('layout.master') ?>
 	<?php startblock('title') ?>
 		Welcome Meow
 	<?php endblock('title') ?>
 	<?php startblock('content') ?>
-		<div class="container">
-			<p class="head-title">Singapura</p>
-			<p class="head-description"><b>A Micro PHP Web Framework</b></p>
-			<p class="head-love">Made with &#10084 from <a href="https://github.com/stinkymonkeyph/singapura" class="link"><b>github</b></a></p>
-			<center>
-				<img src="<?php Helper::link_asset('asset/image/who.jpg') ?>" class="singapura" />
-			</center>
-			<b><p class="head-body">Propositum</p></b>
-			<p class="head-body-description">
-				Develop a micro php fucking web framework, that doesn't come <br> with unnecessary packages
-			</p>
-			<b><p class="head-body">Cliché</p></b>
-			<p class="head-body-description">
-				Reinventing the wheel ! Another piece of shit
-			</p>
-		</div>
+	<div class="container">
+		<p class="head-title">Singapura</p>
+		<p class="head-description"><b>A Micro PHP Web Framework</b></p>
+		<p class="head-love">Made with &#10084 from <a href="https://github.com/stinkymonkeyph/singapura" class="link"><b>github</b></a></p>
+		<center>
+			<img src="<?php Helper::link_asset('asset/image/who.jpg') ?>" class="singapura" />
+		</center>
+		<b><p class="head-body">Propositum</p></b>
+		<p class="head-body-description">
+			Develop a micro php fucking web framework, that doesn't come <br> with unnecessary packages
+		</p>
+		<b><p class="head-body">Cliché</p></b>
+		<p class="head-body-description">
+			Reinventing the wheel ! Another piece of shit
+		</p>
+	</div>
 	<?php endblock('content') ?>
   	```
 
@@ -209,13 +209,10 @@ Yes I'm reinventing the wheel, another piece of shit
 
   	```php
   	<?php
-
   	...
   	// Render Template
-
 	Core\View::render_template();
   	...
-
   	```
 
 5. ***Database Handler*** <br>
