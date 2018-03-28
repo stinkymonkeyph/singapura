@@ -97,7 +97,7 @@ Reinventing the wheel ! Another piece of shit
 
 	Route::get('list/cat', 'CatController@list_cat');
 
-	// Sample Route using a call back function 
+	// Sample Route using function as a parameter
 	
 	Route::get('/', function(){
 		return View::render('body');
