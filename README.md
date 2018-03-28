@@ -86,28 +86,77 @@ Reinventing the wheel ! Another piece of shit
  	<?php
 
 	/**
-	/	Default namespace used
+		Default namespace used
 	**/
 	use Core\Router as Route;
 	use Core\View;
 
 	/**
-	/	Declare all routes below
+		Declare all routes below
 	**/
 
 	/**
-	/	Sample Route using controller@function
+		Sample Route using controller@function
 	**/
 
 	Route::get('list/cat', 'CatController@list_cat');
 
 	/**
-	/	Sample Route using a call back function
+		Sample Route using a call back function
 	**/
 
 	Route::get('/', function(){
 		return View::render('body');
 	});
+
+3. Controllers
+	located at - controller/your_controller
+	```php
+	<?php
+
+	/**
+	Sample Class
+	**/
+
+	namespace App\Controller;
+
+	/**
+		Default namespace used
+	**/
+
+	use Core\Router;
+	use Core\View;
+	use Core\Database as DB;
+
+	/**
+		User defined namespace used
+	**/
+
+	use App\Model\Cat; //sample usage of Cat model
+
+	class CatController
+	{
+
+		public static function list_cat()
+		{
+			
+			$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
+	 		$filtered = DB::select()->from(Cat::table)->where('name', 'Ash')->get(); //filtered query
+	 		
+	 		/**
+				Returns a View along with data as array
+	 		**/
+
+			return View::render(
+				'body',
+				[
+					'cats' => $all,
+					'cat_filtered' => $filtered
+				]
+			);
+		}
+
+	}
 
 # Special Thanks
 
