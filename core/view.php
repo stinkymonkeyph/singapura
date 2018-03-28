@@ -32,7 +32,6 @@ class View
 		echo self::$template_result;
 	}
 
-
 }
 
 
