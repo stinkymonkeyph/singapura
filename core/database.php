@@ -9,7 +9,8 @@ class Database
 {
 	private static $conn;
 	private static $bind = array();
-	private static $query ;
+	private static $query;
+  private static $columns;
 
 	private static function connect_db()
 	{
@@ -17,10 +18,27 @@ class Database
     		self::$conn = $conn->db_handler();
 	}
 
+  public static function update($table)
+  {
+        self::connect_db();
+        self::$query = "UPDATE ".$table ;
+  }
+
+  public static function set($values)
+  {
+        if(is_array($values))
+        {
+
+        }
+        else
+        {
+
+        }
+  }
+
   public static function delete()
   {
         self::connect_db();
-
         self::$query = "DELETE ";
   }
 

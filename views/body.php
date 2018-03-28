@@ -1,4 +1,4 @@
-<?php include 'master.php' ?>
+<?php extend_template('layout.master') ?>
 
 <?php startblock('title') ?>
 	Welcome Meow

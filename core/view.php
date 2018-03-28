@@ -15,6 +15,7 @@ class View
 			extract($data);
 
 		require_once __DIR__.'/../core/external/template.php'; 
+		require_once __DIR__.'/../core/templatewrapper.php';
 		require_once self::append_view_prefix($view_file);
 	
 		flushblocks();  
