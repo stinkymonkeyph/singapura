@@ -80,7 +80,7 @@ Reinventing the wheel ! Another piece of shit
 		  public static $dbms = "mysql"; //currently supports mysql
 	}
 
- 2. Routing
+ 2. ***Routing***
  	located at - routes/routes.php <br>
  	```php
  	<?php
@@ -103,7 +103,7 @@ Reinventing the wheel ! Another piece of shit
 		return View::render('body');
 	});
 
-3. Controllers
+3. ***Controllers***
 	located at - controller/your_controller
 	```php
 	<?php
