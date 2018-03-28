@@ -152,12 +152,12 @@ Yes I'm reinventing the wheel, another piece of shit
 
    ***master.php*** - the base template
 
-   ```html
+   ```html php
    <!DOCTYPE html>
 	<html>
 	<head>
 		<title><?php emptyblock('title') ?></title>
-		<?php include 'header.php'; ?>
+		<?php include 'header.php' ?>
 	</head>
 	<body>
 		<?php emptyblock('content') ?>
