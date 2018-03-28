@@ -145,8 +145,8 @@ Yes I'm reinventing the wheel, another piece of shit
 
 4. ***templating/view*** <br>
    Uses phpti, for php template inheritance <br>
-   phpti website - http://arshaw.com/phpti/
-   Template is rendered in index.php - located at public/index.php <br> <br>
+   phpti website - http://arshaw.com/phpti/ <br>
+   Template is rendered in index.php - located at public/index.php <br>
 
    Below is an example of a view structure <br>
    All files is located at /views
