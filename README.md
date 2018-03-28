@@ -150,7 +150,7 @@ Yes I'm reinventing the wheel, another piece of shit
    Below is an example of a view structure <br>
    All files is located at /views
 
-   *** master.php *** - the base template
+   ***master.php*** - the base template
 
    ```php
    <!DOCTYPE html>
