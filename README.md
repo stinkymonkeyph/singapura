@@ -61,7 +61,7 @@ Yes I'm reinventing the wheel, another piece of shit
  	* php engine run_server ip:port
 
 
- # Manual
+ # Code Snippets - Usage - Manual - Description
 
  1. ***Configuration*** <br>
  	located at - core/config.php <br>
