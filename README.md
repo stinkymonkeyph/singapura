@@ -110,7 +110,6 @@ Reinventing the wheel ! Another piece of shit
 
 	
 	// Sample Class
-	
 
 	namespace App\Controller;
 
