@@ -91,9 +91,7 @@ Reinventing the wheel ! Another piece of shit
 	use Core\Router as Route;
 	use Core\View;
 
-
-	// Declare all routes below 
-	
+	// Declare all routes below
 	
 	// Sample Route using controller@function 
 
