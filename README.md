@@ -164,8 +164,8 @@ Yes I'm reinventing the wheel, another piece of shit
 	</body>
 	</html>
 	```
-	<br>
-  	***header.php*** - included in the base template ***master.php** 
+
+  	***header.php*** - included in the base template ***master.php*** 
 
   	```http
 	<link href="https://fonts.googleapis.com/css?family=Anton|Work+Sans" rel="stylesheet">
