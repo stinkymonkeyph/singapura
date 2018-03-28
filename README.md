@@ -63,12 +63,12 @@ Reinventing the wheel ! Another piece of shit
 
  # Manual
 
- 1. Configuration
- 	* located at - core/config.php
- 	...
+ 1. ***Configuration***
+ 	located at - core/config.php <br>
+ 	here you set the database configuration for your application
  	```php
  	<?php
- 	
+
  	namespace Core;
 
 	class Config
@@ -79,7 +79,36 @@ Reinventing the wheel ! Another piece of shit
 		  public static $db_host = "localhost";
 		  public static $dbms = "mysql"; //currently supports mysql
 	}
- 	...
+
+ 2. Routing
+ 	located at - routes/routes.php <br>
+ 	```php
+ 	<?php
+
+	/**
+		Default namespace used
+	**/
+	use Core\Router as Route;
+	use Core\View;
+
+	/**
+		Declare all routes below
+	**/
+
+	/**
+		Sample Route using controller@function
+
+	**/
+
+	Route::get('list/cat', 'CatController@list_cat');
+
+	/**
+		Sample Route using a call back function
+	**/
+
+	Route::get('/', function(){
+		return View::render('body');
+	});
 
 # Special Thanks
 
