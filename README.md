@@ -130,7 +130,6 @@ Yes I'm reinventing the wheel, another piece of shit
 			$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
 	 		$filtered = DB::select()->from(Cat::table)->where('name', 'Ash')->get(); //filtered query
 	 		
-	 		
 			// Returns a View along with data as array
 			
 			return View::render(
