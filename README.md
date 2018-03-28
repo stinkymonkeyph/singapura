@@ -152,7 +152,7 @@ Yes I'm reinventing the wheel, another piece of shit
 
    ***master.php*** - the base template
 
-   ```html php
+   ```html 
    <!DOCTYPE html>
 	<html>
 	<head>
@@ -163,6 +163,8 @@ Yes I'm reinventing the wheel, another piece of shit
 		<?php emptyblock('content') ?>
 	</body>
 	</html>
+	<br>
+	***header.php***
 
 # Special Thanks
 
