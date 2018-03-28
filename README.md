@@ -4,20 +4,20 @@ A micro php framework
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/who.jpg"></img>
 > <br>
 
-## made for fun, made to learn
+## Learning is Fun
 Been using php frameworks lately, it's too mainstream. How about ? making our own and learning the shit out of these frameworks
 
 # Propositum
-
 Develop a micro php fucking web framework, that doesn't come with unnecessary packages
 
 # Cliché
-
-Reinventing the wheel ! Another piece of shit
+Yes I'm reinventing the wheel, another piece of shit
 
 # TODO
 
 1. Add complex query support for the database handler
+2. Error Tracing
+3. CLI commands using engine file
 
 # Project tree
 
@@ -85,7 +85,6 @@ Reinventing the wheel ! Another piece of shit
  	```php
  	<?php
 
-	
 	// Default namespace used 
 
 	use Core\Router as Route;
@@ -108,7 +107,6 @@ Reinventing the wheel ! Another piece of shit
 	```php
 	<?php
 
-	
 	// Sample Class
 
 	namespace App\Controller;
