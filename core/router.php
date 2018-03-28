@@ -25,7 +25,6 @@ class Router
 	private static function execute_route($path, $method)
 	{
 
-		
 		self::$path = str_replace('//', '/', self::$path);
 
 		if(self::$path == $path)
@@ -33,6 +32,7 @@ class Router
 			if(is_callable($method))
 			{
 				$method();
+				return ;
 			}
 			else if(is_array($method))
 			{

@@ -60,6 +60,27 @@ Reinventing the wheel ! Another piece of shit
  	* php engine run_server
  	* php engine run_server ip:port
 
+
+ # Manual
+
+ 1. Configuration
+ 	* located at - core/config.php
+ 	...
+ 	```php
+ 	<?php
+ 	
+ 	namespace Core;
+
+	class Config
+	{
+		  public static $db_name = "singapura";
+		  public static $db_user = "root";
+		  public static $db_pass = "";
+		  public static $db_host = "localhost";
+		  public static $dbms = "mysql"; //currently supports mysql
+	}
+ 	...
+
 # Special Thanks
 
 > **Adam Shaw** for creating phpti, thank you for making template inheritance simplier <br>
