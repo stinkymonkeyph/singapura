@@ -71,7 +71,7 @@ class Database
 
 	public static function and($key, $value)
 	{
-	 	    self::$query = self::$query." AND ";
+ 	    self::$query = self::$query." AND ";
     	self::$query = self::$query.$key." = :".$key;
     	self::bind_set($key, $value);
     	return new static;
