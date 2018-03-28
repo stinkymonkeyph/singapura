@@ -163,11 +163,11 @@ Yes I'm reinventing the wheel, another piece of shit
 		<?php emptyblock('content') ?>
 	</body>
 	</html>
-	<br>
 	```
+	<br>
   	***header.php*** - included in the base template ***master.php** 
 
-  	```html
+  	```http
 	<link href="https://fonts.googleapis.com/css?family=Anton|Work+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php Helper::link_asset('asset/css/app.css') ?>">
