@@ -156,11 +156,11 @@ Yes I'm reinventing the wheel, another piece of shit
    <!DOCTYPE html>
 	<html>
 	<head>
-		<title><?php emptyblock('title') ?></title>
-		<?php include 'header.php' ?>
+		<title><?php emptyblock('title'); ?></title>
+		<?php include 'header.php'; ?>
 	</head>
 	<body>
-		<?php emptyblock('content') ?>
+		<?php emptyblock('content'); ?>
 	</body>
 	</html>
 
