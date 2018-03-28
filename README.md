@@ -27,10 +27,10 @@ Yes I'm reinventing the wheel, another piece of shit
 
 ## Folder/Files
 
-1. app.
+1. app
 	* Contains the folders controller and model
 
-2. core.
+2. core
 	 * cotains the core files of the framework
 	 	* autoloader
 	 	* router
@@ -39,7 +39,7 @@ Yes I'm reinventing the wheel, another piece of shit
 	 * external folder
 	 	* contains external scripts/files from other author
 
-3. public.
+3. public
  	* contains index.php
 
 4. routes
@@ -142,6 +142,27 @@ Yes I'm reinventing the wheel, another piece of shit
 		}
 
 	}
+
+4. ***templating/view*** <br>
+   Uses phpti, for php template inheritance <br>
+   Template is rendered in index.php - located at public/index.php <br> <br>
+
+   Below is an example of a view structure <br>
+   All files is located at /views
+
+   *** master.php *** - the base template
+
+   ```php
+   <!DOCTYPE html>
+	<html>
+	<head>
+		<title><?php emptyblock('title') ?></title>
+		<?php include 'header.php' ?>
+	</head>
+	<body>
+		<?php emptyblock('content') ?>
+	</body>
+	</html>
 
 # Special Thanks
 
