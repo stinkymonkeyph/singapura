@@ -1,12 +1,8 @@
 <?php 
 
-function extend_template($file)
+function include_template($file)
 {
-	load_file($file);
-}
-
-function load_file($file)
-{
+	
 	$file_dir = $file;
 
 	if(strpos($file, '.') !== false)
@@ -16,12 +12,6 @@ function load_file($file)
 
 	include __DIR__ . '/../views/'.$file_dir.'.php';
 }
-
-function include_template($file)
-{
-	load_file($file);
-}
-
 
 
 ?>

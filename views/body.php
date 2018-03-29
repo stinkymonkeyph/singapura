@@ -1,4 +1,4 @@
-<?php extend_template('layout.master') ?>
+<?php include_template('layout.master') ?>
 
 <?php startblock('title') ?>
 	Welcome Meow
@@ -19,6 +19,6 @@
 		<b><p class="head-body">Cliché</p></b>
 		<p class="head-body-description">
 			Reinventing the wheel ! Another piece of shit
-		</p>
+		</p>w
 	</div>
 <?php endblock('content') ?>

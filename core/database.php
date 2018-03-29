@@ -14,26 +14,29 @@ class Database
 
 	private static function connect_db()
 	{
-    		$conn = new DatabaseConnector();
-    		self::$conn = $conn->db_handler();
+  		$conn = new DatabaseConnector();
+  		self::$conn = $conn->db_handler();
 	}
 
   public static function update($table)
   {
-        self::connect_db();
-        self::$query = "UPDATE ".$table ;
+      self::connect_db();
+      self::$query = "UPDATE ".$table ;
   }
 
-  public static function set($values)
+  public static function set($value_key)
   {
-        if(is_array($values))
-        {
-
-        }
-        else
-        {
-
-        }
+      self::$query = "SET ";
+      $counter = 0 ;
+      foreach($value_key as $key => $value)
+      {
+          self::$query = self::$query.$key." = :".$key;
+          self::bind_set($key, $value);
+          if($counter+1 < count($value_key))
+          {
+             self::$query = self::$query.", ";
+          }
+      }
   }
 
   public static function delete()
@@ -44,41 +47,42 @@ class Database
 
 	public static function select($attributes = null)
 	{
-  		  self::connect_db();
+		  self::connect_db();
 
-     	  self::$query = "SELECT ";
-      	$counter = 0;
-      	if($attributes === null)
-     	  {
-	        self::$query = self::$query." * ";
-      	}
-        else
-      	{
-	        foreach($attributes as $column => $value)
-	        {
-	            self::$query = self::$query.$value;
-	            if($counter+1 < count($attributes))
-	            {
-	              self::$query = self::$query.", ";
-	            }
-	            $counter++;
-	        }
-      	}
-      	return new static;
+   	  self::$query = "SELECT ";
+    	$counter = 0;
+    	if($attributes === null)
+   	  {
+        self::$query = self::$query." * ";
+    	}
+      else
+    	{
+        foreach($attributes as $column => $value)
+        {
+            self::$query = self::$query.$value;
+            if($counter+1 < count($attributes))
+            {
+              self::$query = self::$query.", ";
+            }
+            $counter++;
+        }
+    	}
+
+    	return new static;
 	}
 
   public static function from($table_name)
   {    
         
- 	 	    self::$query = self::$query." FROM ".$table_name;
-      	return new static;
+	 	  self::$query = self::$query." FROM ".$table_name;
+    	return new static;
   }
 
  	public static function where($key, $value)
 	{
-      	self::$query = self::$query." WHERE ".$key." = :".$key;
-      	self::bind_set($key, $value);
-      	return new static;
+    	self::$query = self::$query." WHERE ".$key." = :".$key;
+    	self::bind_set($key, $value);
+    	return new static;
 	}
 
 	private static function bind_set($key, $value)
