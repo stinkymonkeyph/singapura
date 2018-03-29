@@ -181,7 +181,7 @@ Yes I'm reinventing the wheel, another piece of shit
   	***body.php*** - includes the base template
 
   	```html
-  	<?php extend_template('layout.master') ?>
+  	<?php include_template('layout.master') ?>
 	<?php startblock('title') ?>
 		Welcome Meow
 	<?php endblock('title') ?>
