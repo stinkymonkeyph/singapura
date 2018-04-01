@@ -9,7 +9,7 @@ use Core\View;
 
 // Sample Route using controller@function
 
-Route::get('list/cat', 'CatController@list_cat');
+Route::get('/list/cat', 'CatController@list_cat');
 
 // Sample Route using a call back function
 

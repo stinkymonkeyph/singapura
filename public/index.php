@@ -12,7 +12,6 @@ require __DIR__.'/../core/autoloader.php';
 **/
 use Core\Helper;
 
-
 // Handle Request
 
 use Core\Router;

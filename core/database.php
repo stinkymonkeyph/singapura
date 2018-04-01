@@ -1,4 +1,4 @@
-al<?php 
+<?php 
 
 namespace Core;
 use Core\Config;
@@ -22,27 +22,33 @@ class Database
   {
       self::connect_db();
       self::$query = "UPDATE ".$table ;
+
+      return new static;
   }
 
   public static function set($value_key)
   {
-      self::$query = "SET ";
+      self::$query = self::$query." SET ";
       $counter = 0 ;
       foreach($value_key as $key => $value)
       {
-          self::$query = self::$query.$key." = :".$key;
-          self::bind_set($key, $value);
+          self::$query = self::$query.$key." = :".$key.'_update';
+          self::bind_set($key.'_update', $value);
           if($counter+1 < count($value_key))
           {
              self::$query = self::$query.", ";
           }
       }
+
+      return new static;
   }
 
   public static function delete()
   {
         self::connect_db();
         self::$query = "DELETE ";
+
+        return new static;
   }
 
 	public static function select($attributes = null)
@@ -109,6 +115,7 @@ class Database
     	}
     	$stmt->execute();
     	$result = $stmt->fetchAll();
+       
     	return $result;
 	}
 
@@ -163,19 +170,22 @@ class Database
 	public static function save()
 	{
       self::execute();	
+       
 	}
 
   public static function execute()
   {
+
+      echo self::$query .'<br>';
       $stmt = self::$conn->prepare(self::$query);
-      if($stmt->execute(self::$bind))
+ 
+      foreach(self::$bind as $key => $value)
       {
-        return true;
+          $stmt->bindValue($key, $value);
       }
-      else
-      {
-        return false;
-      }  
+      $result = $stmt->execute();
+       
+      return $result;
   }
 
 

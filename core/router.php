@@ -14,6 +14,7 @@ class Router
 
 	public static function get($path, $method)
 	{	
+
 		self::execute_route($path, $method);
 	}
 
@@ -27,6 +28,14 @@ class Router
 
 		self::$path = str_replace('//', '/', self::$path);
 
+		$last_pos = strlen($path) - 1;
+
+		if($path[$last_pos] != '/')
+			$path = $path.'/';
+
+		if($path[0] != '/')
+			$path = '/'.$path;
+		
 		if(self::$path == $path)
 		{
 			if(is_callable($method))

@@ -21,10 +21,10 @@ class CatController
 		
 		$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
  		$filtered = DB::select()->from(Cat::table)->where('name', 'Ash')->get(); //filtered query
- 				
+ 		self::update_cat();		
 		// Returns a View along with data as array
 		return View::render(
-			'body',
+			'cats',
 			[
 				'cats' => $all,
 				'cat_filtered' => $filtered
@@ -32,16 +32,10 @@ class CatController
 		);
 	}
 
-	public static function update_cat($key_value)
+	public static function update_cat()
 	{
-		$value_key = array();
-
-		foreach($key_value as $key => $value)
-		{
-			$value_key[] = ($key => $value);
-		}
-
- 		$update = DB::update(Cat::table)->set(['name' => 'Kanye'])->where('name', 'Ash')->execute() //update query
+	
+ 		$update = DB::update(Cat::table)->set(['name' => 'Ash'])->where('name', 'Kanye')->execute(); //update query
 	}
 
 }

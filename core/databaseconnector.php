@@ -1,6 +1,7 @@
 <?php 
 
 namespace Core;
+
 use Core\Config;
 use PDO;
 
@@ -36,6 +37,11 @@ class DatabaseConnector
     public static function db_handler()
     {
         return self::$db_handler;
+    }
+
+    public static function close_connection()
+    {
+        self::$db_hanlder = null;
     }
 
 }

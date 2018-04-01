@@ -5,7 +5,7 @@ use Core\Database;
 
 class Cat extends Database
 {
-	public const table = "Cat";
+	public const table = "cat";
 }
 
 ?>
