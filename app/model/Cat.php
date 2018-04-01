@@ -3,7 +3,7 @@
 namespace App\Model;
 use Core\Database;
 
-class Cat extends Database
+class Cat 
 {
 	public const table = "cat";
 }

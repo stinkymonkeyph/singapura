@@ -39,11 +39,6 @@ class DatabaseConnector
         return self::$db_handler;
     }
 
-    public static function close_connection()
-    {
-        self::$db_hanlder = null;
-    }
-
 }
 
 

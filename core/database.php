@@ -63,15 +63,15 @@ class Database
     	}
       else
     	{
-        foreach($attributes as $column => $value)
-        {
-            self::$query = self::$query.$value;
-            if($counter+1 < count($attributes))
-            {
-              self::$query = self::$query.", ";
-            }
-            $counter++;
-        }
+          foreach($attributes as $column => $value)
+          {
+              self::$query = self::$query.$value;
+              if($counter+1 < count($attributes))
+              {
+                self::$query = self::$query.", ";
+              }
+              $counter++;
+          }
     	}
 
     	return new static;
@@ -138,12 +138,12 @@ class Database
 	    $counter = 0;
 	    foreach($columns as $column)
 	    {
-	      self::$query = self::$query.$column;
-	      if($counter+1 < count($columns))
-	      {
-	        self::$query = self::$query.",";
-	      }
-	      $counter++;
+  	      self::$query = self::$query.$column;
+  	      if($counter+1 < count($columns))
+  	      {
+  	        self::$query = self::$query.",";
+  	      }
+  	      $counter++;
 	    }
 	    self::$query = self::$query.")";
 	    return new static;
@@ -170,21 +170,17 @@ class Database
 	public static function save()
 	{
       self::execute();	
-       
 	}
 
   public static function execute()
   {
-
-      echo self::$query .'<br>';
-      $stmt = self::$conn->prepare(self::$query);
- 
+      $stmt = self::$conn->prepare(self::$query); 
       foreach(self::$bind as $key => $value)
       {
           $stmt->bindValue($key, $value);
       }
       $result = $stmt->execute();
-       
+      self::$bind = array();
       return $result;
   }
 
