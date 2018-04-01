@@ -18,6 +18,7 @@ Yes I'm reinventing the wheel, another piece of shit
 1. Add complex query support for the database handler
 2. Error Tracing
 3. CLI commands using engine file
+4. Session Handling
 
 # Project tree
 

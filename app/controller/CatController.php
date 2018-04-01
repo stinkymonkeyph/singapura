@@ -2,18 +2,15 @@
 
 
 // Sample Class
-
 namespace App\Controller;
 
 
 // Default namespace used
-
 use Core\Router;
 use Core\View;
 use Core\Database as DB;
 
 // User defined namespace used
-
 use App\Model\Cat; //sample usage of Cat model
 
 class CatController
