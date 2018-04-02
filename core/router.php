@@ -43,7 +43,7 @@ class Router
 				$method();
 				return ;
 			}
-			else(strpos($method, '@') !== false)
+			else if(strpos($method, '@') !== false)
 			{
 				$class_function = self::extract_class_function($method);
 				$class = self::append_controller_prefix($class_function[0]);
