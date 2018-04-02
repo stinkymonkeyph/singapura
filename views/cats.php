@@ -5,7 +5,11 @@
 <?php endblock('title') ?>
 
 <?php startblock('content') ?>
+	<br>
+	<p class="head-title">Singapura</p>
+	<b><p class="head-body">List of Cats</p></b>
+	<br>
 	<?php foreach($cats as $cat): ?>
-		<p><?php echo $cat['name']; ?></p>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
 	<?php endforeach; ?>
 <?php endblock('content') ?>

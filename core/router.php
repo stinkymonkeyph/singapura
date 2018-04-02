@@ -43,6 +43,17 @@ class Router
 				$method();
 				return ;
 			}
+			else(strpos($method, '@') !== false)
+			{
+				$class_function = self::extract_class_function($method);
+				$class = self::append_controller_prefix($class_function[0]);
+				$function = $class_function[1];
+				self::execute_class_function($class, $function);
+			}
+
+			/**
+			//future implementation
+			//array name and function	
 			else if(is_array($method))
 			{
 				$class_function = self::extract_class_function($method[0]);
@@ -50,13 +61,9 @@ class Router
 				$function = $class_function[1];
 				self::execute_class_function($class, $function);
 			}
-			else if(strpos($method, '@') !== false)
-			{
-				$class_function = self::extract_class_function($method);
-				$class = self::append_controller_prefix($class_function[0]);
-				$function = $class_function[1];
-				self::execute_class_function($class, $function);
-			}
+
+			**/
+
 		}
 
 	}
