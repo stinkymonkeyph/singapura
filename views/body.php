@@ -19,6 +19,6 @@
 		<b><p class="head-body">Cliché</p></b>
 		<p class="head-body-description">
 			Reinventing the wheel ! Another piece of shit
-		</p>w
+		</p>
 	</div>
 <?php endblock('content') ?>

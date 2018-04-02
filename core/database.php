@@ -20,6 +20,7 @@ class Database
 
   public static function update($table)
   {
+      //update()->set()->where()->execute();
       self::connect_db();
       self::$query = "UPDATE ".$table ;
 
@@ -45,6 +46,7 @@ class Database
 
   public static function delete()
   {
+        //delete()->from(table_name)->where(column, value)->execute();
         self::connect_db();
         self::$query = "DELETE ";
 
@@ -53,10 +55,11 @@ class Database
 
 	public static function select($attributes = null)
 	{
+      //select(attributes)->from(table_name)->where(column, value)->get();
 		  self::connect_db();
-
    	  self::$query = "SELECT ";
-    	$counter = 0;
+    	
+      $counter = 0;
     	if($attributes === null)
    	  {
         self::$query = self::$query." * ";
@@ -115,7 +118,7 @@ class Database
     	}
     	$stmt->execute();
     	$result = $stmt->fetchAll();
-       
+      self::reset_bind();
     	return $result;
 	}
 
@@ -134,6 +137,7 @@ class Database
 
 	public static function columns($columns)
 	{
+
 	    self::$query = self::$query."(";
 	    $counter = 0;
 	    foreach($columns as $column)
@@ -169,19 +173,34 @@ class Database
 
 	public static function save()
 	{
-      self::execute();	
+  
+     $stmt = self::prepare_statement();
+     $stmt->execute(self::$bind);
+     self::reset_bind();	
+
 	}
 
   public static function execute()
   {
-      $stmt = self::$conn->prepare(self::$query); 
+
+      $stmt = self::prepare_statement(); 
       foreach(self::$bind as $key => $value)
       {
           $stmt->bindValue($key, $value);
       }
       $result = $stmt->execute();
+      self::reset_bind();
+      return $result; 
+  }
+
+  private static function prepare_statement()
+  {
+     return self::$conn->prepare(self::$query);
+  }
+
+  private static function reset_bind()
+  {
       self::$bind = array();
-      return $result;
   }
 
 
