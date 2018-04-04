@@ -12,4 +12,11 @@
 	<?php foreach($cats as $cat): ?>
 		<p class="head-body-description"><?php echo $cat['name']; ?></p>
 	<?php endforeach; ?>
+
+	<hr>
+	<br>
+
+	<?php foreach($cat_filtered as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
+	<?php endforeach; ?>
 <?php endblock('content') ?>

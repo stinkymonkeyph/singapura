@@ -13,7 +13,6 @@ require __DIR__.'/../core/autoloader.php';
 use Core\Helper;
 
 // Handle Request
-
 use Core\Router;
 
 Router::parse_route($_SERVER['REQUEST_URI']); //parse http request

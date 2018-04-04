@@ -20,9 +20,10 @@ class CatController
 	{
 
 		$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
- 		$filtered = DB::select()->from(Cat::table)->where('name', 'Ash')->get(); //filtered query
- 		self::insert_cat();
- 		self::delete_cat();
+ 		$filtered = DB::select()->from(Cat::table)->where('name', 'alisha')->get(); //filtered query
+ 		//self::insert_cat();
+ 		//self::delete_cat();
+ 		//self::update_cat();
 		// Returns a View along with data as array
 		return View::render(
 			'cats',
@@ -35,8 +36,7 @@ class CatController
 
 	public static function update_cat()
 	{
-		
- 		$update = DB::update(Cat::table)->set(['name' => 'Kanye'])->where('name', 'Ash')->execute(); //update query
+ 		$update = DB::update(Cat::table)->set('name','alisha')->where('name', 'kanye')->execute(); //update query
 	}
 
 	public static function delete_cat()

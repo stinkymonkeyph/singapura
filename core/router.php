@@ -9,12 +9,11 @@ class Router
 	public static function parse_route($uri)
 	{
 		$request_uri = explode('?', $uri, 2);
-		self::$path = str_replace('/public','',$request_uri[0].'/');	
+		self::$path = str_replace('/public','',$request_uri[0].'/');
 	}
 
 	public static function get($path, $method)
 	{	
-
 		self::execute_route($path, $method);
 	}
 
@@ -25,7 +24,6 @@ class Router
 
 	private static function execute_route($path, $method)
 	{
-
 		self::$path = str_replace('//', '/', self::$path);
 
 		$last_pos = strlen($path) - 1;

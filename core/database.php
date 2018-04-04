@@ -27,20 +27,34 @@ class Database
       return new static;
   }
 
-  public static function set($value_key)
+  private static function set_single($key, $value)
+  {
+      self::$query = self::$query." SET ".$key." =:".$key.'_update';
+      self::bind_set($key.'_update', $value);
+      return new static;
+  }
+
+  private static function set_array($key_value)
   {
       self::$query = self::$query." SET ";
       $counter = 0 ;
-      foreach($value_key as $key => $value)
+      foreach($key_value as $key => $value)
       {
           self::$query = self::$query.$key." = :".$key.'_update';
           self::bind_set($key.'_update', $value);
-          if($counter+1 < count($value_key))
+          if($counter+1 < count($key_value))
           {
              self::$query = self::$query.", ";
           }
       }
+  }
 
+  public static function set($key_value, $value = null)
+  {
+      if(is_array($key_value) && $value == null)
+          self::set_array($key_value);
+      else
+          self::set_single($key_value, $value);
       return new static;
   }
 
@@ -87,12 +101,56 @@ class Database
     	return new static;
   }
 
- 	public static function where($key, $value)
+ 	private static function where_single($key, $value)
 	{
-    	self::$query = self::$query." WHERE ".$key." = :".$key;
+    	self::$query = self::$query." WHERE ".$key." =:".$key;
     	self::bind_set($key, $value);
     	return new static;
 	}
+
+  private static function where_array($key_value)
+  {
+      self::$query = self::$query." WHERE " ;
+      $counter = 0;
+      foreach($key_value as $key => $value)
+      {
+          self::$query = self::$query.$key." =:".$key." ";
+          self::bind_set($key, $value);
+          if($counter+1 < count($key_value))
+          {
+              self::$query = self::$query.", ";
+          }
+          $counter++;
+      }
+
+      return new static;
+  }
+
+  public static function where($key_value, $value = null)
+  {
+        if(is_array($key_value) && $value == null)
+            self::where_array($key_value);
+        else
+            self::where_single($key_value, $value);
+        return new static;
+  }
+
+  public static function where_and($key_value)
+  {
+        self::$query = self::$query." WHERE ";
+        $counter = 0;
+        foreach($key_value as $key => $value)
+        {
+            self::$query = self::$query.$key." =:".$key." ";
+            self::bind_set($key, $value);
+            if($counter+1 < count($key_value))
+            {
+                self::$query = self::$query." AND ";
+            }
+            $counter++;
+        }
+        return new static;
+  }
 
 	private static function bind_set($key, $value)
 	{
@@ -140,7 +198,7 @@ class Database
 
 	    self::$query = self::$query."(";
 	    $counter = 0;
-	    foreach($columns as $column)
+      foreach($columns as $column)
 	    {
   	      self::$query = self::$query.$column;
   	      if($counter+1 < count($columns))
@@ -149,15 +207,15 @@ class Database
   	      }
   	      $counter++;
 	    }
-	    self::$query = self::$query.")";
-	    return new static;
+      self::$query = self::$query.")";
+      return new static;
    }
 
 	public static function values($values)
 	{
 	    self::$query = self::$query." VALUES(";
 	    $counter = 0;
-	    foreach($values as $value)
+      foreach($values as $value)
 	    {
 	        self::$bind[] = $value;
 	        self::$query = self::$query."?";
@@ -167,27 +225,27 @@ class Database
 	        }
 	        $counter++;
 	    }
-	    self::$query = self::$query.") ";
-	    return new static;
+      self::$query = self::$query.") ";
+      return new static;
 	}
 
 	public static function save()
 	{
-  
-     $stmt = self::prepare_statement();
-     $stmt->execute(self::$bind);
-     self::reset_bind();	
-
+       $stmt = self::prepare_statement();
+       $stmt->execute(self::$bind);
+       self::reset_bind();	
 	}
 
   public static function execute()
   {
 
+      echo self::$query;
       $stmt = self::prepare_statement(); 
       foreach(self::$bind as $key => $value)
       {
           $stmt->bindValue($key, $value);
       }
+   
       $result = $stmt->execute();
       self::reset_bind();
       return $result; 
@@ -202,7 +260,6 @@ class Database
   {
       self::$bind = array();
   }
-
 
 }
 
