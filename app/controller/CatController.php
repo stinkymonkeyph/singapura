@@ -46,7 +46,7 @@ class CatController
 
 	public static function insert_cat()
 	{
-		$insert = DB::insert()->into(Cat::table)->columns(['name'])->values(['alisha'])->save();
+		$insert = DB::insert()->into(Cat::table)->columns('name')->values('alisha')->save();
 
 	}
 

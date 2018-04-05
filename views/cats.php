@@ -15,7 +15,7 @@
 
 	<hr>
 	<br>
-
+	<b><p class="head-body">Filtered Cats</p></b>
 	<?php foreach($cat_filtered as $cat): ?>
 		<p class="head-body-description"><?php echo $cat['name']; ?></p>
 	<?php endforeach; ?>

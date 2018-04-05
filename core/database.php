@@ -10,7 +10,6 @@ class Database
 	private static $conn;
 	private static $bind = array();
 	private static $query;
-  private static $columns;
 
 	private static function connect_db()
 	{
@@ -128,11 +127,11 @@ class Database
 
   public static function where($key_value, $value = null)
   {
-        if(is_array($key_value) && $value == null)
-            self::where_array($key_value);
-        else
-            self::where_single($key_value, $value);
-        return new static;
+      if(is_array($key_value) && $value == null)
+          self::where_array($key_value);
+      else
+          self::where_single($key_value, $value);
+      return new static;
   }
 
   public static function where_and($key_value)
@@ -193,39 +192,69 @@ class Database
 	    return new static;
 	}
 
-	public static function columns($columns)
-	{
+  private static function column_single($column)
+  {
+      self::$query = self::$query."(".$column.")";
+      return new static;
+  }
 
-	    self::$query = self::$query."(";
-	    $counter = 0;
+  private static function column_array($columns)
+  {
+      self::$query = self::$query."(";
+      $counter = 0;
       foreach($columns as $column)
-	    {
-  	      self::$query = self::$query.$column;
-  	      if($counter+1 < count($columns))
-  	      {
-  	        self::$query = self::$query.",";
-  	      }
-  	      $counter++;
-	    }
+      {
+          self::$query = self::$query.$column;
+          if($counter+1 < count($columns))
+          {
+            self::$query = self::$query.",";
+          }
+          $counter++;
+      }
       self::$query = self::$query.")";
       return new static;
-   }
+  }
+
+	public static function columns($columns)
+	{
+	    if(is_array($columns))
+        self::column_array($columns);
+      else
+        self::column_single($columns);
+      return new static;    
+  }
+
+  private static function values_single($value)
+  {
+      self::$query = self::$query." VALUES(?)";
+      self::$bind[] = $value;
+
+      return new static;
+  }
+
+  private static function values_array($values)
+  {
+      self::$query = self::$query." VALUES(";
+      $counter = 0;
+      foreach($values as $value)
+      {
+          self::$bind[] = $value;
+          self::$query = self::$query."?";
+          if($counter+1 < count($values))
+          {
+              self::$query = self::$query.",";
+          }
+          $counter++;
+      }
+      self::$query = self::$query.") ";
+  }
 
 	public static function values($values)
 	{
-	    self::$query = self::$query." VALUES(";
-	    $counter = 0;
-      foreach($values as $value)
-	    {
-	        self::$bind[] = $value;
-	        self::$query = self::$query."?";
-	        if($counter+1 < count($values))
-	        {
-	            self::$query = self::$query.",";
-	        }
-	        $counter++;
-	    }
-      self::$query = self::$query.") ";
+	    if(is_array($values))
+        self::values_array($values);
+      else
+        self::values_single($values);
       return new static;
 	}
 
@@ -238,14 +267,11 @@ class Database
 
   public static function execute()
   {
-
-      echo self::$query;
       $stmt = self::prepare_statement(); 
       foreach(self::$bind as $key => $value)
       {
           $stmt->bindValue($key, $value);
       }
-   
       $result = $stmt->execute();
       self::reset_bind();
       return $result; 

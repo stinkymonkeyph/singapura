@@ -6,6 +6,9 @@
 **/
 require __DIR__.'/../core/autoloader.php';
 
+// Initialized Sessions
+Core\Session::start_session();
+
 /**
 	Helper Class Comes with Handy Methods
 	/core/helper.php
