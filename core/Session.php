@@ -1,12 +1,13 @@
 <?php 
 
 namespace Core;
-session_start();
+@session_start();
 
 class Session
 {
 	// Session and Token Handler Class
 	private static $private_key = "someprivatekey";
+	private static $encryption_method = "aes128";
 
 	public static function start_session()
 	{
@@ -21,7 +22,7 @@ class Session
 		if(!self::token_exists($token))
 			$_SESSION['csrf_tokens'][] = $token; //store in session array
 		else
-			self::generate_csrf_token();
+		self::generate_csrf_token();
 
 		echo $token ;
 	}
@@ -35,8 +36,27 @@ class Session
 			unset($_SESSION['csrf_tokens'][$key]);
 			$revoke = true;
 		}
-		var_dump($_SESSION['csrf_tokens']);
 		return $revoke;
+	}
+
+	public static function ecnrypt_session($name, $value)
+	{
+		$encrypted_value = @openssl_encrypt(
+				$value, 
+				self::$encryption_method, 
+				md5(self::$private_key)
+		); 
+		$_SESSION[$name] = $encrypted_value; 
+	}
+
+	public static function decrypt_session($name)
+	{
+		$decrypt_session = openssl_decrypt(
+				$_SESSION[$name], 
+				self::$encryption_method, 
+				md5(self::$private_key)
+		);
+		return $decrypt_session;
 	}
 
 	private static function token_exists($token)
