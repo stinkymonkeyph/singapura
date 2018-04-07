@@ -9,7 +9,10 @@ if(count($argv) > 2)
 else
 	$param = null;
 
-$function($param);
+if(function_exists($function))
+	$function($param);
+else
+	echo "Invalid function, please check your spelling";
 
 function run_server($host_port)
 {

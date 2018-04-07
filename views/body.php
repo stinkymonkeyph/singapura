@@ -4,7 +4,7 @@
 	Welcome Meow
 <?php endblock('title') ?>
 
-<?php startblock('content') ?>
+<?php startblock('content') ?>	
 	<div class="container">
 		<p class="head-title">Singapura</p>
 		<p class="head-description"><b>A Micro PHP Web Framework</b></p>

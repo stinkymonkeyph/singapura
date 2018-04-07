@@ -18,11 +18,12 @@ class Session
 	public static function generate_csrf_token()
 	{
 		//generate some random token
-		$token = md5(mt_rand(time(), time())) . md5(self::$private_key);
+		$token = md5(mt_rand(time(),time())) . md5(self::$private_key);
+		
 		if(!self::token_exists($token))
 			$_SESSION['csrf_tokens'][] = $token; //store in session array
 		else
-		self::generate_csrf_token();
+			self::generate_csrf_token();
 
 		echo $token ;
 	}
@@ -59,7 +60,8 @@ class Session
 		return $decrypt_session;
 	}
 
-	private static function token_exists($token)
+
+	public static function token_exists($token)
 	{
 		return in_array($token, $_SESSION['csrf_tokens']);
 	}
