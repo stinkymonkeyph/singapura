@@ -167,8 +167,7 @@ class Database
 
 	public static function get()
 	{
-    	$query = self::$query;
-    	$stmt = self::$conn->prepare($query);
+    	$stmt = self::$conn->prepare(self::$query);
     	foreach(self::$bind as $key => $value)
     	{
          	$stmt->bindValue($key, $value);

@@ -39,7 +39,7 @@ class Router
 			{
 				echo "Invalid Token";
 			}
-		}
+		} 	
 	}
 
 	private static function execute_route($path, $method)

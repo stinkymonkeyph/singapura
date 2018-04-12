@@ -4,7 +4,11 @@ namespace Core;
 
 class Error
 {
-	// error handling class
+	public static function display_error($error)
+	{
+		//display error message
+	}
+
 }
 
 ?>

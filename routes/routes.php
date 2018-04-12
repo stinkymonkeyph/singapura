@@ -29,6 +29,8 @@ Route::post('/test/form', function()
 	{
 		echo $key .' = '. $value . '<br>' ;
 	}
+	@session_start();
+	var_dump($_SESSION['csrf_tokens']);
 
 });
 
