@@ -2,11 +2,14 @@
 
 /** 
 	Autoload classes
-	/core/autoloader.php
+	/core/Autoloader.php
 **/
 require __DIR__.'/../core/autoloader.php';
 
-// make application
+/**
+	Make Application
+	/core/Singapura.php
+**/
 Core\Singapura::make_app();
 
 

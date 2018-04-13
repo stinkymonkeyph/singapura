@@ -7,7 +7,7 @@ class View
 
 	private static $template_result;
 
-	public static function render($view_file, $data = null)
+	public static function render($view_file, $data = null, $type = null)
 	{
 		ob_start();
 		
@@ -16,8 +16,11 @@ class View
 
 		require_once __DIR__.'/../core/external/template.php'; 
 		require_once __DIR__.'/../core/templatewrapper.php';
-		require_once self::append_view_prefix($view_file);
-	
+		if($type === null)
+			require_once self::append_view_prefix($view_file);
+		else
+			require_once self::append_error_view_prefix($view_file);
+
 		flushblocks();  
 		self::$template_result = ob_get_clean();
 	}
@@ -26,6 +29,11 @@ class View
 	{
 		$directory = str_replace('.', '/', $view_file);
 		return __DIR__.'/../views/'.$view_file.'.php';
+	}
+
+	private static function append_error_view_prefix($view_file)
+	{
+		return __DIR__.'/error/'.$view_file.'.php';
 	}
 
 	public static function render_template()

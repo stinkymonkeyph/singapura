@@ -1,7 +1,9 @@
 <?php 
 
 namespace Core;
-Use Core\Session;
+use Core\Session;
+use Core\Error;
+use Exception;
 
 class Router
 {
@@ -37,7 +39,7 @@ class Router
 			}
 			else
 			{
-				echo "Invalid Token";
+				throw new Exception("Router Error : Invalid csrf token, cannot verify post request");
 			}
 		} 	
 	}
@@ -95,6 +97,11 @@ class Router
 	public static function get_post_data()
 	{
 		return $_POST;
+	}
+
+	public static function extract_post_data($name)
+	{
+		return $_POST[$name];
 	}
 
 	private static function is_token_valid($token)

@@ -4,6 +4,8 @@ namespace Core;
 
 use Core\Config;
 use PDO;
+use Core\Error;
+use Exception;
 
 class DatabaseConnector
 {
@@ -11,8 +13,8 @@ class DatabaseConnector
     
     public function __construct()
     {      
-        if(Config::$dbms == 'mysql')
-        {
+       if(Config::$dbms == 'mysql')
+       {
             try
             {
                 self::$db_handler = new PDO
@@ -25,10 +27,10 @@ class DatabaseConnector
                 self::$db_handler->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                 self::$db_handler->exec("SET CHARACTER SET utf8");
             }
-            catch (Exception $err)
+            catch (Throwable $err)
             {
-                $err->getMessage() . "<br/>";
-                die();
+                throw new Exception($err->getMessage());
+                die();   
             }
         }
     }
