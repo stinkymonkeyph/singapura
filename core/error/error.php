@@ -4,14 +4,12 @@
 <head>
 	<title>Meoow !</title>
 	<link href="https://fonts.googleapis.com/css?family=Anton|Work+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 </head>
 <body>
 	<p class="head-title">Meoow! There's an Error</p>
 	<div class="error-div">
 		<br>
 		<p class="error-par"><?php echo $errors ?></p>
-		<p class="error-par"><?php echo 'Class: ' . $class . ' on line '. $line ?></p>
 		<?php foreach($traces as $trace): ?>
 			<p class="error-par"><?php echo $trace ?></p>
 		<?php endforeach ?>
@@ -22,7 +20,6 @@
 <style>	
 	.error-par
 	{
-		//font-family: 'Nanum Gothic', sans-serif;
 		margin-left: 10px !important;
 		margin-top: 10px !important;
 	}

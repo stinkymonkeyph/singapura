@@ -18,7 +18,7 @@ class View
 		require_once __DIR__.'/../core/templatewrapper.php';
 		if($type === null)
 			require_once self::append_view_prefix($view_file);
-		else
+		else if($type === 'error')
 			require_once self::append_error_view_prefix($view_file);
 
 		flushblocks();  

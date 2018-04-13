@@ -9,6 +9,7 @@ class Config
 	public static $db_pass = "";
 	public static $db_host = "localhost";
 	public static $dbms = "mysql"; //currently supports mysql
+	public static $debugging = True; //True or False  
 }
 
 ?>

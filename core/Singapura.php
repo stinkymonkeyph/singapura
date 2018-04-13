@@ -7,11 +7,11 @@ use Core\Router;
 use Core\View;
 use Core\Helper;
 use Core\Error;
-use Throwable;
+use Throwable; 
 
 class Singapura
 {
-	public static function make_app()
+	public function make_app()
 	{
 		try
 		{

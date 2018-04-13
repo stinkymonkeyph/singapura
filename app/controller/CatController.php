@@ -19,7 +19,7 @@ class CatController
 	public static function list_cat()
 	{
 
-		$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
+		$all = DB::select()->froms(Cat::table)->get(); //gets all cat, uses Cat model table constant 
  		$filtered = DB::select()->from(Cat::table)->where('name', 'alisha')->get(); //filtered query
  		//self::insert_cat();
  		//self::delete_cat();
@@ -36,17 +36,17 @@ class CatController
 
 	public static function update_cat()
 	{
- 		$update = DB::update(Cat::table)->set('name','alisha')->where('name', 'kanye')->execute(); //update query
+ 		DB::update(Cat::table)->set('name','alisha')->where('name', 'kanye')->execute(); //update query
 	}
 
 	public static function delete_cat()
 	{
-		$delete = DB::delete()->from(Cat::table)->where('name','alisha')->execute(); //delete query
+		DB::delete()->from(Cat::table)->where('name','alisha')->execute(); //delete query
 	}
 
 	public static function insert_cat()
 	{
-		$insert = DB::insert()->into(Cat::table)->columns('name')->values('alisha')->save();
+		DB::insert()->into(Cat::table)->columns('name')->values('alisha')->save();
 
 	}
 
