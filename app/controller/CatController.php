@@ -16,10 +16,9 @@ use App\Model\Cat; //sample usage of Cat model
 class CatController
 {
 
-	public static function list_cat()
+	public function list_cat()
 	{
-
-		$all = DB::select()->froms(Cat::table)->get(); //gets all cat, uses Cat model table constant 
+		$all = DB::select()->from(Cat::table)->get(); //gets all cat, uses Cat model table constant 
  		$filtered = DB::select()->from(Cat::table)->where('name', 'alisha')->get(); //filtered query
  		//self::insert_cat();
  		//self::delete_cat();

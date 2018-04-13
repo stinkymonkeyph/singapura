@@ -10,6 +10,7 @@
 	<div class="error-div">
 		<br>
 		<p class="error-par"><?php echo $errors ?></p>
+		<p class="error-par"><b>Stack Trace</b></p>
 		<?php foreach($traces as $trace): ?>
 			<p class="error-par"><?php echo $trace ?></p>
 		<?php endforeach ?>

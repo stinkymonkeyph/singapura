@@ -19,7 +19,7 @@ function run_server($host_port)
 	if($host_port == null)
 		$host_port = "localhost:8000";
 	echo "\nListening on ".$host_port."\n" ;
-	exec('php -S '. $host_port );	
+	exec('php -S '. $host_port.' -t public' );	
 }
 
 function create_controller($class_name)

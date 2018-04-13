@@ -10,6 +10,7 @@ class Router
 	private static $path;
 	private static $request_type;
 	private static $csrf_token;
+	private static $path_found = False;
 
 	public static function parse_route($uri)
 	{
@@ -57,6 +58,7 @@ class Router
 		
 		if(self::$path == $path)
 		{
+			self::$path_found = True;
 			if(is_callable($method))
 			{
 				$method();
@@ -92,6 +94,10 @@ class Router
 	public static function load_routes()
 	{
 		include __DIR__.'/../routes/routes.php';
+
+		if(!self::$path_found)
+			throw new Exception("Router Error: Invalid route");
+			
 	}
 
 	public static function get_post_data()

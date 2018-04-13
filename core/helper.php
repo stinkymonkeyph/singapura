@@ -5,7 +5,7 @@ class Helper
 {
 	function link_asset($path)
 	{
-		echo str_replace('//', '/' ,'/public/'.$path);
+		echo 'http://'.$_SERVER['HTTP_HOST'].'/'.$path;
 	}
 
 	function csrf_token()
