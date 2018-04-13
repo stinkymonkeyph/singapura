@@ -12,7 +12,7 @@ class Router
 	private static $csrf_token;
 	private static $path_found = False;
 
-	public static function parse_route($uri)
+	public function parse_route($uri)
 	{
 		$request_uri = explode('?', $uri, 2);
 		self::$path = str_replace('/public','',	'/'.$request_uri[0].'/');
@@ -23,13 +23,13 @@ class Router
 		}
 	}
 
-	public static function get($path, $method)
+	public function get($path, $method)
 	{	
 		if(self::$request_type === 'GET')
 			self::execute_route($path, $method);
 	}
 
-	public static function post($path, $method)
+	public function post($path, $method)
 	{
 		if(self::$request_type === 'POST')
 		{
@@ -45,7 +45,7 @@ class Router
 		} 	
 	}
 
-	private static function execute_route($path, $method)
+	private function execute_route($path, $method)
 	{
 		self::$path = str_replace('//', '/', self::$path);
 		$last_pos = strlen($path) - 1;
@@ -76,22 +76,22 @@ class Router
 
 	}
 			
-	private static function extract_class_function($class_function)
+	private function extract_class_function($class_function)
 	{
 		return explode('@', $class_function);
 	}
 
-	private static function append_controller_prefix($class)
+	private function append_controller_prefix($class)
 	{
 		return 'App\Controller\\'. $class;
 	}
 
-	private static function execute_class_function($class, $function)
+	private function execute_class_function($class, $function)
 	{
 		$class::$function(); 
 	}
 
-	public static function load_routes()
+	public function load_routes()
 	{
 		include __DIR__.'/../routes/routes.php';
 
@@ -100,17 +100,17 @@ class Router
 			
 	}
 
-	public static function get_post_data()
+	public function get_post_data()
 	{
 		return $_POST;
 	}
 
-	public static function extract_post_data($name)
+	public function extract_post_data($name)
 	{
 		return $_POST[$name];
 	}
 
-	private static function is_token_valid($token)
+	private function is_token_valid($token)
 	{
 		return Session::token_exists($token);
 	}

@@ -11,13 +11,13 @@ class Database
 	private static $bind = array();
 	private static $query;
 
-	private static function connect_db()
+	 private function connect_db()
 	{
   		$conn = new DatabaseConnector();
   		self::$conn = $conn->db_handler();
 	}
 
-  public static function update($table)
+  public function update($table)
   {
       //update()->set()->where()->execute();
       self::connect_db();
@@ -26,14 +26,14 @@ class Database
       return new static;
   }
 
-  private static function set_single($key, $value)
+   private function set_single($key, $value)
   {
       self::$query = self::$query." SET ".$key." =:".$key.'_update';
       self::bind_set($key.'_update', $value);
       return new static;
   }
 
-  private static function set_array($key_value)
+   private function set_array($key_value)
   {
       self::$query = self::$query." SET ";
       $counter = 0 ;
@@ -48,7 +48,7 @@ class Database
       }
   }
 
-  public static function set($key_value, $value = null)
+  public function set($key_value, $value = null)
   {
       if(is_array($key_value) && $value == null)
           self::set_array($key_value);
@@ -57,7 +57,7 @@ class Database
       return new static;
   }
 
-  public static function delete()
+  public function delete()
   {
         //delete()->from(table_name)->where(column, value)->execute();
         self::connect_db();
@@ -66,7 +66,7 @@ class Database
         return new static;
   }
 
-	public static function select($attributes = null)
+	public function select($attributes = null)
 	{
       //select(attributes)->from(table_name)->where(column, value)->get();
 		  self::connect_db();
@@ -93,21 +93,21 @@ class Database
     	return new static;
 	}
 
-  public static function from($table_name)
+  public function from($table_name)
   {    
         
 	 	  self::$query = self::$query." FROM ".$table_name;
     	return new static;
   }
 
- 	private static function where_single($key, $value)
+ 	 private function where_single($key, $value)
 	{
     	self::$query = self::$query." WHERE ".$key." =:".$key;
     	self::bind_set($key, $value);
     	return new static;
 	}
 
-  private static function where_array($key_value)
+   private function where_array($key_value)
   {
       self::$query = self::$query." WHERE " ;
       $counter = 0;
@@ -125,7 +125,7 @@ class Database
       return new static;
   }
 
-  public static function where($key_value, $value = null)
+  public function where($key_value, $value = null)
   {
       if(is_array($key_value) && $value == null)
           self::where_array($key_value);
@@ -134,7 +134,7 @@ class Database
       return new static;
   }
 
-  public static function where_and($key_value)
+  public function where_and($key_value)
   {
         self::$query = self::$query." WHERE ";
         $counter = 0;
@@ -151,13 +151,13 @@ class Database
         return new static;
   }
 
-	private static function bind_set($key, $value)
+	 private function bind_set($key, $value)
 	{
     	self::$bind[':'.$key] = $value;
     	return new static;
 	}
 
-	public static function and($key, $value)
+	public function and($key, $value)
 	{
  	    self::$query = self::$query." AND ";
     	self::$query = self::$query.$key." = :".$key;
@@ -165,7 +165,7 @@ class Database
     	return new static;
 	}
 
-	public static function get()
+	public function get()
 	{
     	$stmt = self::$conn->prepare(self::$query);
     	foreach(self::$bind as $key => $value)
@@ -178,26 +178,26 @@ class Database
     	return $result;
 	}
 
-	public static function insert()
+	public function insert()
 	{
 	    self::$query = "INSERT ";
 	    $counter = 0;
 	    return new static;
 	}
 
-	public static function into($table_name)
+	public function into($table_name)
 	{
 	    self::$query = self::$query." INTO ".$table_name;
 	    return new static;
 	}
 
-  private static function column_single($column)
+   private function column_single($column)
   {
       self::$query = self::$query."(".$column.")";
       return new static;
   }
 
-  private static function column_array($columns)
+   private function column_array($columns)
   {
       self::$query = self::$query."(";
       $counter = 0;
@@ -214,7 +214,7 @@ class Database
       return new static;
   }
 
-	public static function columns($columns)
+	public function columns($columns)
 	{
 	    if(is_array($columns))
         self::column_array($columns);
@@ -223,7 +223,7 @@ class Database
       return new static;    
   }
 
-  private static function values_single($value)
+   private function values_single($value)
   {
       self::$query = self::$query." VALUES(?)";
       self::$bind[] = $value;
@@ -231,7 +231,7 @@ class Database
       return new static;
   }
 
-  private static function values_array($values)
+   private function values_array($values)
   {
       self::$query = self::$query." VALUES(";
       $counter = 0;
@@ -248,7 +248,7 @@ class Database
       self::$query = self::$query.") ";
   }
 
-	public static function values($values)
+	public function values($values)
 	{
 	    if(is_array($values))
         self::values_array($values);
@@ -257,14 +257,14 @@ class Database
       return new static;
 	}
 
-	public static function save()
+	public function save()
 	{
        $stmt = self::prepare_statement();
        $stmt->execute(self::$bind);
        self::reset_bind();	
 	}
 
-  public static function execute()
+  public function execute()
   {
       $stmt = self::prepare_statement(); 
       foreach(self::$bind as $key => $value)
@@ -276,12 +276,12 @@ class Database
       return $result; 
   }
 
-  private static function prepare_statement()
+   private function prepare_statement()
   {
      return self::$conn->prepare(self::$query);
   }
 
-  private static function reset_bind()
+   private function reset_bind()
   {
       self::$bind = array();
   }

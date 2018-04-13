@@ -9,13 +9,13 @@ class Session
 	private static $private_key = "someprivatekey";
 	private static $encryption_method = "aes128";
 
-	public static function start_session()
+	public function start_session()
 	{
 		if(!isset($_SESSION['csrf_tokens']))
 			$_SESSION['csrf_tokens'] = array();
 	}
 
-	public static function generate_csrf_token()
+	public function generate_csrf_token()
 	{
 		//generate some random token
 		$token = md5(mt_rand(time(),time())) . md5(self::$private_key . rand());
@@ -23,7 +23,7 @@ class Session
 		echo $token ;
 	}
 
-	public static function revoke_csrf_token($token)
+	public function revoke_csrf_token($token)
 	{
 		$revoke = false;
 		if(self::token_exists($token))
@@ -35,7 +35,7 @@ class Session
 		return $revoke;
 	}
 
-	public static function ecnrypt_session($name, $value)
+	public function ecnrypt_session($name, $value)
 	{
 		$encrypted_value = @openssl_encrypt(
 					$value, 
@@ -45,7 +45,7 @@ class Session
 		$_SESSION[$name] = $encrypted_value; 
 	}
 
-	public static function decrypt_session($name)
+	public function decrypt_session($name)
 	{
 		$decrypt_session = openssl_decrypt(
 					$_SESSION[$name], 
@@ -55,7 +55,7 @@ class Session
 		return $decrypt_session;
 	}
 
-	public static function token_exists($token)
+	public function token_exists($token)
 	{
 		return in_array($token, $_SESSION['csrf_tokens']);
 	}

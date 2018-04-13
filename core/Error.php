@@ -8,7 +8,7 @@ use Throwable;
 
 class Error
 {
-	public static function display_error(Throwable $error)
+	public function display_error(Throwable $error)
 	{
 		if(Config::$debugging)
 		{

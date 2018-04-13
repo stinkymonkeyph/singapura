@@ -35,7 +35,7 @@ class DatabaseConnector
         }
     }
 
-    public static function db_handler()
+    public function db_handler()
     {
         return self::$db_handler;
     }

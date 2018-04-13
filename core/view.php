@@ -7,7 +7,7 @@ class View
 
 	private static $template_result;
 
-	public static function render($view_file, $data = null, $type = null)
+	public function render($view_file, $data = null, $type = null)
 	{
 		ob_start();
 		
@@ -25,18 +25,18 @@ class View
 		self::$template_result = ob_get_clean();
 	}
 
-	private static function append_view_prefix($view_file)
+	private function append_view_prefix($view_file)
 	{
 		$directory = str_replace('.', '/', $view_file);
 		return __DIR__.'/../views/'.$view_file.'.php';
 	}
 
-	private static function append_error_view_prefix($view_file)
+	private function append_error_view_prefix($view_file)
 	{
 		return __DIR__.'/error/'.$view_file.'.php';
 	}
 
-	public static function render_template()
+	public function render_template()
 	{
 		echo self::$template_result;
 	}
