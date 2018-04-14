@@ -1,12 +1,6 @@
 <?php
 
 namespace Core;
-
-use Core\Session;
-use Core\Router;
-use Core\View;
-use Core\Helper;
-use Core\Error;
 use Throwable; 
 
 class Singapura
@@ -15,9 +9,14 @@ class Singapura
 	{
 		try
 		{
-			Session::start_session();
-			Router::parse_route($_SERVER['REQUEST_URI']); //parse http request
-			Router::load_routes(); //load user defined routes
+			new Session();
+
+			$request = new Request();
+			$request->get_request(); // parse request
+
+			$router = new Router($request); //init router
+			$router->load_routes(); // load user routes
+		
 		}
 		catch(Throwable $err)
 		{

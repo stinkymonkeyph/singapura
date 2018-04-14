@@ -9,7 +9,7 @@ class Session
 	private static $private_key = "someprivatekey";
 	private static $encryption_method = "aes128";
 
-	public function start_session()
+	public function __construct()
 	{
 		if(!isset($_SESSION['csrf_tokens']))
 			$_SESSION['csrf_tokens'] = array();

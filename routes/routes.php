@@ -21,9 +21,11 @@ Route::get('/test/form', function()
 	return View::render('form');
 });
 
+// Sample Route using a call back function to get all
+// post data request
 Route::post('/test/form', function()
 {
-	$data = Route::get_post_data();
+	$data = Core\Request::post_data();
 	
 	foreach($data as $key => $value)
 	{
