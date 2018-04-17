@@ -1,6 +1,7 @@
 <?php 
 
 namespace Core;
+use Exception;
 
 class View 
 {
@@ -25,10 +26,23 @@ class View
 		self::$template_result = ob_get_clean();
 	}
 
+	public function render_error($errors)
+	{
+		self::render('error',$errors, 'error');
+	}
+
 	private function append_view_prefix($view_file)
 	{
-		$directory = str_replace('.', '/', $view_file);
-		return __DIR__.'/../views/'.$view_file.'.php';
+		$directory = __DIR__.'/../views/'.
+					 str_replace('.', '/', $view_file).'.php';
+		if(!self::view_exist($directory))
+			throw new Exception("View Error: View file does not exists");
+		return $directory;
+	}
+
+	private function view_exist($view_file)
+	{
+		return file_exists($view_file);
 	}
 
 	private function append_error_view_prefix($view_file)

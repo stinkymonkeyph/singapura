@@ -8,19 +8,17 @@ use Throwable;
 
 class Error
 {
-	public function display_error(Throwable $error)
+	public function catch_error(Throwable $error)
 	{
 		if(Config::$debugging)
 		{
 			$trace = explode("\n", $error->getTraceAsString());
 			$class = explode(":", $trace[0]);
-			View::render(
-				'error', 
+			View::render_error(
 				[
 					'errors' => $error->getMessage(),
 					'traces' => $trace
-				], 
-				'error'
+				]
 			);
 		}
 	}

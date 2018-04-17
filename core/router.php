@@ -9,9 +9,11 @@ use Core\Request;
 class Router
 {
 	private static $path;
+	private static $chunk_path;
 	private static $request_type;
 	private static $csrf_token;
 	private static $path_found = False;
+	private static $variables = array();
 
 	public function __construct(Request $request)
 	{
@@ -22,13 +24,60 @@ class Router
 
 	public function get($path, $method)
 	{	
-		if(self::$request_type === 'GET')
+		if(self::$request_type === 'GET' && self::$path_found != True)
+		{
+			self::extract_get_data($path);
 			self::execute_route($path, $method);
+		}
+	}
+
+	public function extract_get_data($path)
+	{
+		if(strpos($path, '/{') !== false)
+		{
+			$exploded_path = explode("{", $path);
+			self::$chunk_path = $exploded_path[0];
+
+			foreach($exploded_path as $chunk)
+			{
+				if(strpos($chunk, "}") !== false)
+				{
+					$clean_variable = str_replace("}", "", $chunk);
+					$clean_variable = str_replace("/", "", $clean_variable);
+					self::$variables[] = $clean_variable;
+				}
+			}
+
+			if(strpos(self::$path, self::$chunk_path) !== false)
+			{
+				$explode_chunks = explode("/", self::$chunk_path);
+				$explode_path = explode("/", self::$path);
+				$path_size = sizeof($explode_path);
+				$chunk_size = sizeof($explode_chunks);
+				$path_chunk_diff = $path_size - $chunk_size;
+				$variable_size = sizeof(self::$variables);
+
+				if($path_chunk_diff == $variable_size)
+				{
+					$counter = 0;
+					while($path_chunk_diff <= $chunk_size-1)
+					{
+						$path_chunk_diff++;
+						$_GET[self::$variables[$counter]] = $explode_path[$path_chunk_diff];
+						$counter++;
+					}
+
+					self::$path = $path;
+					if(self::$path[sizeof(self::$path)] !== '/')
+						self::$path .= '/';
+				}
+			}
+		}
 	}
 
 	public function post($path, $method)
 	{
-		if(self::$request_type === 'POST')
+		if(self::$request_type === 'POST' && self::$path_found !== True)
 		{
 			if(Session::token_exists(self::$csrf_token))
 			{
@@ -44,6 +93,7 @@ class Router
 
 	private function execute_route($path, $method)
 	{
+
 		self::$path = str_replace('//', '/', self::$path);
 		$last_pos = strlen($path) - 1;
 
@@ -92,11 +142,6 @@ class Router
 		include __DIR__.'/../routes/routes.php';
 		if(!self::$path_found)
 			throw new Exception("Router Error: Invalid route");
-	}
-
-	public function extract_post_data($name)
-	{
-		return $_POST[$name];
 	}
 
 }

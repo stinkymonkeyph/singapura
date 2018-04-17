@@ -9,24 +9,22 @@ class Singapura
 	{
 		try
 		{
-			new Session();
+			new Session(); //start new session
 
 			$request = new Request();
-			$request->get_request(); // parse request
+			$request->get_request(); // get request
 
-			$router = new Router($request); //init router
-			$router->load_routes(); // load user routes
-		
+			$router = new Router($request); //initialize router
+			$router->load_routes(); // load user routes		
 		}
 		catch(Throwable $err)
 		{
-			Error::display_error($err);
+			Error::catch_error($err);
 		}
 
 		View::render_template(); //render template
 	}
 }
-
 
 
 ?>

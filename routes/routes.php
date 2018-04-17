@@ -1,7 +1,6 @@
 <?php 
 
 // Default namespace used
-
 use Core\Router as Route;
 use Core\View;
 
@@ -34,6 +33,13 @@ Route::post('/test/form', function()
 	@session_start();
 	var_dump($_SESSION['csrf_tokens']);
 
+});
+
+Route::get('/cat/lover/{id}/{data}', function()
+{
+	$data = Core\Request::get_data();
+	echo $data['id'] .'<br>';
+	echo $data['data'] .'<br>';
 });
 
 ?>

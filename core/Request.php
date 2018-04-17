@@ -12,13 +12,14 @@ class Request
 	{
 		$uri = $_SERVER['REQUEST_URI'];
 		$request_uri = explode('?', $uri, 2);
-		self::$uri = '/'.str_replace('/public','',	$request_uri[0].'/');
+		self::$uri = '/'.str_replace('/public','', $request_uri[0].'/');
 		self::$uri = str_replace('//', '/', self::$uri);
 		self::$request_type = $_SERVER['REQUEST_METHOD'];
 		if(self::$request_type === 'POST')
 		{
 			self::$csrf_token = $_POST['csrf_token'];
 		}
+
 	}
 
 	public function uri()
@@ -34,6 +35,11 @@ class Request
 	public function post_data()
 	{
 		return $_POST;
+	}
+
+	public function get_data()
+	{
+		return $_GET;
 	}
 
 	public function csrf_token()
