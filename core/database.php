@@ -21,29 +21,29 @@ class Database
   {
       //update()->set()->where()->execute();
       self::connect_db();
-      self::$query = "UPDATE ".$table ;
+      self::$query = 'UPDATE '.$table ;
 
       return new static;
   }
 
    private function set_single($key, $value)
   {
-      self::$query = self::$query." SET ".$key." =:".$key.'_update';
+      self::$query = self::$query.' SET '.$key.' =:'.$key.'_update';
       self::bind_set($key.'_update', $value);
       return new static;
   }
 
    private function set_array($key_value)
   {
-      self::$query = self::$query." SET ";
+      self::$query = self::$query.' SET ';
       $counter = 0 ;
       foreach($key_value as $key => $value)
       {
-          self::$query = self::$query.$key." = :".$key.'_update';
+          self::$query = self::$query.$key.' = :'.$key.'_update';
           self::bind_set($key.'_update', $value);
           if($counter+1 < count($key_value))
           {
-             self::$query = self::$query.", ";
+             self::$query = self::$query.', ';
           }
       }
   }
@@ -61,7 +61,7 @@ class Database
   {
         //delete()->from(table_name)->where(column, value)->execute();
         self::connect_db();
-        self::$query = "DELETE ";
+        self::$query = 'DELETE ';
 
         return new static;
   }
@@ -70,12 +70,12 @@ class Database
 	{
       //select(attributes)->from(table_name)->where(column, value)->get();
 		  self::connect_db();
-   	  self::$query = "SELECT ";
+   	  self::$query = 'SELECT ';
     	
       $counter = 0;
     	if($attributes === null)
    	  {
-        self::$query = self::$query." * ";
+        self::$query = self::$query.' * ';
     	}
       else
     	{
@@ -84,7 +84,7 @@ class Database
               self::$query = self::$query.$value;
               if($counter+1 < count($attributes))
               {
-                self::$query = self::$query.", ";
+                self::$query = self::$query.', ';
               }
               $counter++;
           }
@@ -96,28 +96,28 @@ class Database
   public function from($table_name)
   {    
         
-	 	  self::$query = self::$query." FROM ".$table_name;
+	 	  self::$query = self::$query.' FROM '.$table_name;
     	return new static;
   }
 
  	 private function where_single($key, $value)
 	{
-    	self::$query = self::$query." WHERE ".$key." =:".$key;
+    	self::$query = self::$query.' WHERE '.$key.' =:'.$key;
     	self::bind_set($key, $value);
     	return new static;
 	}
 
    private function where_array($key_value)
   {
-      self::$query = self::$query." WHERE " ;
+      self::$query = self::$query.' WHERE ' ;
       $counter = 0;
       foreach($key_value as $key => $value)
       {
-          self::$query = self::$query.$key." =:".$key." ";
+          self::$query = self::$query.$key.' =:'.$key.' ';
           self::bind_set($key, $value);
           if($counter+1 < count($key_value))
           {
-              self::$query = self::$query.", ";
+              self::$query = self::$query.', ';
           }
           $counter++;
       }
@@ -136,15 +136,15 @@ class Database
 
   public function where_and($key_value)
   {
-        self::$query = self::$query." WHERE ";
+        self::$query = self::$query.' WHERE ';
         $counter = 0;
         foreach($key_value as $key => $value)
         {
-            self::$query = self::$query.$key." =:".$key." ";
+            self::$query = self::$query.$key.' =:'.$key.' ';
             self::bind_set($key, $value);
             if($counter+1 < count($key_value))
             {
-                self::$query = self::$query." AND ";
+                self::$query = self::$query.' AND ';
             }
             $counter++;
         }
@@ -159,8 +159,8 @@ class Database
 
 	public function and($key, $value)
 	{
- 	    self::$query = self::$query." AND ";
-    	self::$query = self::$query.$key." = :".$key;
+ 	    self::$query = self::$query.' AND ';
+    	self::$query = self::$query.$key.' = :'.$key;
     	self::bind_set($key, $value);
     	return new static;
 	}
@@ -180,37 +180,37 @@ class Database
 
 	public function insert()
 	{
-	    self::$query = "INSERT ";
+	    self::$query = 'INSERT ';
 	    $counter = 0;
 	    return new static;
 	}
 
 	public function into($table_name)
 	{
-	    self::$query = self::$query." INTO ".$table_name;
+	    self::$query = self::$query.' INTO '.$table_name;
 	    return new static;
 	}
 
    private function column_single($column)
   {
-      self::$query = self::$query."(".$column.")";
+      self::$query = self::$query.'('.$column.')';
       return new static;
   }
 
    private function column_array($columns)
   {
-      self::$query = self::$query."(";
+      self::$query = self::$query.'(';
       $counter = 0;
       foreach($columns as $column)
       {
           self::$query = self::$query.$column;
           if($counter+1 < count($columns))
           {
-            self::$query = self::$query.",";
+            self::$query = self::$query.',';
           }
           $counter++;
       }
-      self::$query = self::$query.")";
+      self::$query = self::$query.')';
       return new static;
   }
 
@@ -225,7 +225,7 @@ class Database
 
    private function values_single($value)
   {
-      self::$query = self::$query." VALUES(?)";
+      self::$query = self::$query.' VALUES(?)';
       self::$bind[] = $value;
 
       return new static;
@@ -233,19 +233,19 @@ class Database
 
    private function values_array($values)
   {
-      self::$query = self::$query." VALUES(";
+      self::$query = self::$query.' VALUES(';
       $counter = 0;
       foreach($values as $value)
       {
           self::$bind[] = $value;
-          self::$query = self::$query."?";
+          self::$query = self::$query.'?';
           if($counter+1 < count($values))
           {
-              self::$query = self::$query.",";
+              self::$query = self::$query.',';
           }
           $counter++;
       }
-      self::$query = self::$query.") ";
+      self::$query = self::$query.') ';
   }
 
 	public function values($values)

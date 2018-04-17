@@ -36,7 +36,7 @@ class View
 		$directory = __DIR__.'/../views/'.
 					 str_replace('.', '/', $view_file).'.php';
 		if(!self::view_exist($directory))
-			throw new Exception("View Error: View file does not exists");
+			throw new Exception('View Error: View file does not exists');
 		return $directory;
 	}
 

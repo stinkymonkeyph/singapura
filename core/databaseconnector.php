@@ -25,7 +25,7 @@ class DatabaseConnector
                        Config::$db_pass
                 );
                 self::$db_handler->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-                self::$db_handler->exec("SET CHARACTER SET utf8");
+                self::$db_handler->exec('SET CHARACTER SET utf8');
             }
             catch (Throwable $err)
             {

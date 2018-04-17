@@ -6,8 +6,8 @@ namespace Core;
 class Session
 {
 	// Session and Token Handler Class
-	private static $private_key = "someprivatekey";
-	private static $encryption_method = "aes128";
+	private static $private_key = 'someprivatekey';
+	private static $encryption_method = 'aes128';
 
 	public function __construct()
 	{

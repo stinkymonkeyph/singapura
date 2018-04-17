@@ -35,23 +35,23 @@ class Router
 	{
 		if(strpos($path, '/{') !== false)
 		{
-			$exploded_path = explode("{", $path);
+			$exploded_path = explode('{', $path);
 			self::$chunk_path = $exploded_path[0];
 
 			foreach($exploded_path as $chunk)
 			{
-				if(strpos($chunk, "}") !== false)
+				if(strpos($chunk, '}') !== false)
 				{
-					$clean_variable = str_replace("}", "", $chunk);
-					$clean_variable = str_replace("/", "", $clean_variable);
+					$clean_variable = str_replace('}', '', $chunk);
+					$clean_variable = str_replace('/', '', $clean_variable);
 					self::$variables[] = $clean_variable;
 				}
 			}
 
 			if(strpos(self::$path, self::$chunk_path) !== false)
 			{
-				$explode_chunks = explode("/", self::$chunk_path);
-				$explode_path = explode("/", self::$path);
+				$explode_chunks = explode('/', self::$chunk_path);
+				$explode_path = explode('/', self::$path);
 				$path_size = sizeof($explode_path);
 				$chunk_size = sizeof($explode_chunks);
 				$path_chunk_diff = $path_size - $chunk_size;
@@ -60,13 +60,12 @@ class Router
 				if($path_chunk_diff == $variable_size)
 				{
 					$counter = 0;
-					while($path_chunk_diff <= $chunk_size-1)
-					{
+					for (; $path_chunk_diff <= $chunk_size-1;) 
+					{ 
 						$path_chunk_diff++;
 						$_GET[self::$variables[$counter]] = $explode_path[$path_chunk_diff];
 						$counter++;
 					}
-
 					self::$path = $path;
 					if(self::$path[sizeof(self::$path)] !== '/')
 						self::$path .= '/';
@@ -86,7 +85,7 @@ class Router
 			}
 			else
 			{
-				throw new Exception("Router Error : Invalid csrf token, cannot verify post request");
+				throw new Exception('Router Error : Invalid csrf token, cannot verify post request');
 			}
 		} 	
 	}
@@ -141,7 +140,7 @@ class Router
 	{
 		include __DIR__.'/../routes/routes.php';
 		if(!self::$path_found)
-			throw new Exception("Router Error: Invalid route");
+			throw new Exception('Router Error: Invalid route');
 	}
 
 }

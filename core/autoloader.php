@@ -16,9 +16,9 @@ class Autoloader
 
 		foreach($paths as $path)
 		{
-			$base_class = explode("\\", $class_name);
+			$base_class = explode('\\', $class_name);
 			$trim_base_class = end($base_class);
-			$file = __DIR__ . $path . $trim_base_class . ".php" ; 
+			$file = __DIR__ . $path . $trim_base_class . '.php' ; 
 			
 			if( file_exists( $file )) 
 			{

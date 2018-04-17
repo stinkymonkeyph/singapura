@@ -12,8 +12,8 @@ class Error
 	{
 		if(Config::$debugging)
 		{
-			$trace = explode("\n", $error->getTraceAsString());
-			$class = explode(":", $trace[0]);
+			$trace = explode('\n', $error->getTraceAsString());
+			$class = explode(':', $trace[0]);
 			View::render_error(
 				[
 					'errors' => $error->getMessage(),
