@@ -23,7 +23,7 @@ class Session
 		echo $token ;
 	}
 
-	public function revoke_csrf_token($token)
+	protected function revoke_csrf_token($token)
 	{
 		$revoke = false;
 		if(self::token_exists($token))
@@ -55,7 +55,7 @@ class Session
 		return $decrypt_session;
 	}
 
-	public function token_exists($token)
+	protected function token_exists($token)
 	{
 		return in_array($token, $_SESSION['csrf_tokens']);
 	}

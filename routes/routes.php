@@ -7,7 +7,6 @@ use Core\View;
 // Declare all routes below
 
 // Sample Route using controller@function
-
 Route::get('/list/cat', 'CatController@list_cat');
 
 // Sample Route using a call back function
@@ -30,11 +29,10 @@ Route::post('/test/form', function()
 	{
 		echo $key .' = '. $value . '<br>' ;
 	}
-	@session_start();
 	var_dump($_SESSION['csrf_tokens']);
-
 });
 
+// Get data routing
 Route::get('/cat/lover/{id}/{data}', function()
 {
 	$data = Core\Request::get_data();

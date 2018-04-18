@@ -1,8 +1,9 @@
 <?php 
 
 namespace Core;
+use Core\Session;
 
-class Request 
+class Request extends Session
 {
 	private static $uri;
 	private static $request_type;
@@ -20,6 +21,16 @@ class Request
 			self::$csrf_token = $_POST['csrf_token'];
 		}
 
+	}
+
+	public function is_valid_token($token)
+	{
+		return self::token_exists($token);
+	}
+
+	public function revoke_token($token)
+	{
+		self::revoke_csrf_token($token);
 	}
 
 	public function uri()

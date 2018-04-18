@@ -78,10 +78,10 @@ class Router
 	{
 		if(self::$request_type === 'POST' && self::$path_found !== True)
 		{
-			if(Session::token_exists(self::$csrf_token))
+			if(Request::is_valid_token(self::$csrf_token))
 			{
 				self::execute_route($path, $method);
-				Session::revoke_csrf_token(self::$csrf_token);
+				Request::revoke_token(self::$csrf_token);
 			}
 			else
 			{

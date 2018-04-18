@@ -28,10 +28,9 @@ class Autoloader
 		}
 	
 	}
-
 }
 
-spl_autoload_register('autoloader::autoload_register');
+spl_autoload_register('Autoloader::autoload_register');
 
 
 ?>

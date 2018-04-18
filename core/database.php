@@ -153,7 +153,7 @@ class Database
 
 	 private function bind_set($key, $value)
 	{
-    	self::$bind[':'.$key] = $value;
+    	self::$bind[':'.$key] = self::sanitize_data($value);
     	return new static;
 	}
 
@@ -226,7 +226,7 @@ class Database
    private function values_single($value)
   {
       self::$query = self::$query.' VALUES(?)';
-      self::$bind[] = $value;
+      self::$bind[] = self::sanitize_data($value);
 
       return new static;
   }
@@ -237,7 +237,7 @@ class Database
       $counter = 0;
       foreach($values as $value)
       {
-          self::$bind[] = $value;
+          self::$bind[] = self::sanitize_data($value);
           self::$query = self::$query.'?';
           if($counter+1 < count($values))
           {
@@ -276,14 +276,19 @@ class Database
       return $result; 
   }
 
-   private function prepare_statement()
+  private function prepare_statement()
   {
      return self::$conn->prepare(self::$query);
   }
 
-   private function reset_bind()
+  private function reset_bind()
   {
       self::$bind = array();
+  }
+
+  private function sanitize_data($data)
+  {
+      return htmlentities($data);
   }
 
 }
