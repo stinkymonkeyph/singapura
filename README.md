@@ -251,7 +251,7 @@ Yes I'm reinventing the wheel, another piece of shit
 
     $update_simple = DB::update('cat')->set('name','alisha')->where('name','kanye')->execute();
     ```
-    E. SQL Statements using AND 
+    E. AND Statements
     ```php
     <?php
     *** SOON TO UPDATE *** 
