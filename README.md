@@ -8,26 +8,20 @@
 Been using php frameworks lately, it's too mainstream. How about ? making our own and learning the shit out of these frameworks
 
 # Propositum
-Develop a micro php fucking web framework, that doesn't come with unnecessary packages
+Develop a micro php web framework
 
 # Cliché
-Yes I'm reinventing the wheel, another piece of shit
+Yes! I'm reinventing the wheel, and it is another piece of shit
 
 # TODO
 
 1. Add complex query support for the database handler
-2. Error Tracing
-3. CLI commands using engine file
-4. Session Handling - Class - Token Generator
-5. Add HTTP post for routes, csrf tokens
 
-# Project tree
+# Folder Structures
 
 > <br>
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/tree.JPG"></img>
 > <br>
-
-## Folder/Files
 
 1. app
 	* Contains the folders controller and model
