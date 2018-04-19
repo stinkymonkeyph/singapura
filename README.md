@@ -219,10 +219,10 @@ Yes I'm reinventing the wheel, another piece of shit
 
 5. ***Database Handler*** <br>
    located at - core/database.php <br> <br>
-   A. Select Statements 
-   ```php
-   <?php
-   	use Core\Database as DB;
+    A. Select Statements 
+    ```php
+    <?php
+    use Core\Database as DB;
 
    	$select_all = DB::select()->from('cat');
    	$select_one = DB::select('name')->from('cat')->where('name', 'ashley')->execute();
