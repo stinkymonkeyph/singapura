@@ -10,6 +10,7 @@ class Database
 	private static $conn;
 	private static $bind = array();
 	private static $query;
+  private static $has_where = False;
 
 	 private function connect_db()
 	{
@@ -100,14 +101,16 @@ class Database
     	return new static;
   }
 
- 	private function where_single($key, $value)
+ 	public function where($key, $value)
 	{
-    	self::$query = self::$query.' WHERE '.$key.' =:'.$key;
+   
+      self::$query = self::$query . ' WHERE ';
+    	self::$query = self::$query.$key.' =:'.$key.' ';
     	self::bind_set($key, $value);
     	return new static;
 	}
 
-  private function where_array($key_value)
+  public function where_or($key_value)
   {
       self::$query = self::$query.' WHERE ' ;
       $counter = 0;
@@ -117,19 +120,10 @@ class Database
           self::bind_set($key, $value);
           if($counter+1 < count($key_value))
           {
-              self::$query = self::$query.', ';
+              self::$query = self::$query.' OR ';
           }
           $counter++;
       }
-      return new static;
-  }
-
-  public function where($key_value, $value = null)
-  {
-      if(is_array($key_value) && $value == null)
-          self::where_array($key_value);
-      else
-          self::where_single($key_value, $value);
       return new static;
   }
 
@@ -158,14 +152,31 @@ class Database
 
 	public function and($key, $value)
 	{
+      $prefix = self::random_key_prefix();
  	    self::$query = self::$query.' AND ';
-    	self::$query = self::$query.$key.' = :'.$key;
-    	self::bind_set($key, $value);
+    	self::$query = self::$query.$key.' = :'.$prefix.$key;
+    	self::bind_set($prefix.$key, $value);
     	return new static;
 	}
 
+  private function random_key_prefix()
+  {
+      return mt_rand(0, 5000);
+  }
+
+  public function or($key, $value)
+  {
+      $prefix = self::random_key_prefix();
+      self::$query = self::$query . ' OR ';
+      self::$query = self::$query.$key.' = :'.$prefix.$key;
+      self::bind_set($prefix.$key, $value);
+      return new static;
+  }
+
 	public function get()
 	{  
+      echo '<br>'.self::$query;
+      self::remove_extra_comma();
     	$stmt = self::$conn->prepare(self::$query);
     	foreach(self::$bind as $key => $value)
     	{
@@ -174,8 +185,16 @@ class Database
     	$stmt->execute();
     	$result = $stmt->fetchAll();
       self::reset_bind();
+      self::reset_has_flags();
     	return $result;
 	}
+
+  private function remove_extra_comma()
+  {
+      $query_size = sizeof(self::$query);
+      if(self::$query[$query_size] === ',')
+        self::$query = substr(self::$query, 0, ($query_size-1)); 
+  }
 
 	public function insert()
 	{
@@ -278,6 +297,7 @@ class Database
        $stmt = self::prepare_statement();
        $stmt->execute(self::$bind);
        self::reset_bind();	
+       self::reset_has_flags();
 	}
 
   public function execute()
@@ -289,6 +309,7 @@ class Database
       }
       $result = $stmt->execute();
       self::reset_bind();
+      self::reset_has_flags();
       return $result; 
   }
 
@@ -305,6 +326,11 @@ class Database
   private function sanitize_data($data)
   {
       return htmlentities($data);
+  }
+
+  private function reset_has_flags()
+  {
+      self::$has_where = False;
   }
 
 }

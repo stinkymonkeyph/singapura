@@ -20,7 +20,12 @@ class CatController
  		$filtered = self::filter_cat();
  		$join = self::select_join();
  		$raw = self::select_raw();
+ 		$or = self::select_or();
+ 		$and = self::select_and();
+ 		$where_and = self::where_and();
+ 		$where_or = self::where_or();
  		
+ 		//self::insert_raw();
  		//self::insert_cat();
  		//self::delete_cat();
  		//self::update_cat();
@@ -31,7 +36,11 @@ class CatController
 			[
 				'cats' => $all,
 				'cat_filtered' => $filtered,
-				'join' => $join
+				'join' => $join,
+				'or' => $or,
+				'and' => $and,
+				'where_and' => $where_and,
+				'where_or' => $where_or
 			]
 		);
 	}
@@ -48,7 +57,8 @@ class CatController
 
 	public function select_join()
 	{
-		return DB::select(['cat.name as cat','breed.name as breed'])->from(Cat::table)->join('breed','cat.breed_id','breed.id')->get();
+		return DB::select(['cat.name as cat','breed.name as breed'])->from(Cat::table)
+				   ->join('breed','cat.breed_id','breed.id')->get();
 		//sample query using join function
 	}
 
@@ -58,6 +68,49 @@ class CatController
 		//sample query using raw 
 		// raw function can execute any query provided by the developer
 		// take note that data should be sanitize, raw function does not sanitize data
+	}
+
+	public function select_or()
+	{
+		return DB::select()->from(Cat::table)->where('name', 'ashley')->or('name', 'tom')->or('name', 'kittie')->get();
+	}
+
+	public function select_and()
+	{
+		return DB::select()->from(Cat::table)->where('name', 'ashley')->and('name', 'tom')->and('name', 'kittie')->get();
+	}
+
+	public function where_and()
+	{
+		// where_and function only works with different attribute names
+		// where_and function fails if you are comparing two same attributes
+		// instead use where()->and()->and() if dealing with multiple and 
+		// statements with same column names
+		return DB::select()->from(Cat::table)->where_and(
+			[
+				'name' => 'ashley',
+				'breed_id' => 1
+			]
+		)->get();
+	}
+
+	public function where_or()
+	{
+		// where_or function only works with different attribute names
+		// where_or function fails if you are comparing two same attributes
+		// instead use where()->or()->or() if dealing with multiple OR 
+		// statements with same column names
+		return DB::select()->from(Cat::table)->where_or(
+			[
+				'name' => 'ashley',
+				'breed_id' => 1
+			]
+		)->get();
+	}
+
+	public function insert_raw()
+	{
+		return DB::raw('INSERT INTO cat (name, breed_id) values("tom",1)');
 	}
 
 	public function update_cat()

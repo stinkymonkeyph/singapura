@@ -22,4 +22,20 @@
 	<?php foreach($join as $cat): ?>
 		<p class="head-body-description"><?php echo $cat['cat'].' a '.$cat['breed']; ?></p>
 	<?php endforeach; ?>
+	<b><p class="head-body">Or Result</p></b>
+	<?php foreach($or as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
+	<?php endforeach; ?>
+	<b><p class="head-body">And Result</p></b>
+	<?php foreach($and as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
+	<?php endforeach; ?>
+	<b><p class="head-body">Where_and Result</p></b>
+	<?php foreach($where_and as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
+	<?php endforeach; ?>
+	<b><p class="head-body">Where_or Result</p></b>
+	<?php foreach($where_or as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['name']; ?></p>
+	<?php endforeach; ?>
 <?php endblock('content') ?>
