@@ -248,7 +248,30 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     E. Multiple Where Statements
     ```php
     <?php 
-    *** SOON TO UPDATE ***
+    use Core\Database as DB;
+
+    // where_and function only works with different attribute names
+	// where_and function fails if you are comparing two same attributes
+	// instead use where()->and()->and() if dealing with multiple and 
+	// statements with same column names
+    $where_and = DB::select()->from('cat')->where_and(
+    	[
+    		'name' => 'ashley',
+    		'breed_id' = 1
+    	]
+    )->get();
+
+    // where_or function only works with different attribute names
+	// where_or function fails if you are comparing two same attributes
+	// instead use where()->or()->or() if dealing with multiple OR 
+	// statements with same column names
+    $where_or = DB::sect()->from('cat')->where_or(
+	    [
+	    	'name' => 'ashley',
+	    	'breed_id' = 1
+	    ]
+    )->get();
+    
     ```
     F. AND Statements
     ```php
