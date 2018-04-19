@@ -277,6 +277,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     ```php
     <?php
     use Core\Database as DB;
+    
     $single_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')->get();
     $multiple_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
     				->and('name', 'kittie')->get();
@@ -285,6 +286,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     ```php
     <?php
     use Core\Database as DB;
+
     $single_or = DB::select()->from('cat')->where('name', 'alisha')->or('name', 'kanye')->get();
     $multiple_or = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
     			   ->or('name', 'kittie')->get();
