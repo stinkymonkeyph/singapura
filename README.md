@@ -219,7 +219,7 @@ Yes I'm reinventing the wheel, another piece of shit
 
 5. ***Database Handler*** <br>
    located at - core/database.php <br> <br>
-   A. Select statements 
+   A. Select Statements 
    ```php
    <?php
    	use Core\Database as DB;
@@ -236,6 +236,21 @@ Yes I'm reinventing the wheel, another piece of shit
     $insert_single = DB::insert()->into('cat')->columns('name')->values('kanye')->save();
     $insert_array = DB::insert()->into('cat')->columns(['name', 'breed_id'])->values(['ashley',1])->save();
     ``` 
+    C. Delete Statements
+    ```php
+    <?php 
+    use Core\Database as DB;
+
+    $delete_all = DB::delete()->from('cat')->execute();
+    $delete_with_condition = DB::delete()->from('cat')->where('name', 'alisha')->execute();
+    ```
+    D. Update Statements
+    ```php
+    <?php 
+    use Core\Database as DB;
+
+    $update_simple = DB::update('cat')->set('name','alisha')->where('name','kanye')->execute();
+    ```
 
 # Special Thanks
 

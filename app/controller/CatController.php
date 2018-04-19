@@ -54,7 +54,8 @@ class CatController
 
 	public function select_raw()
 	{
-		return DB::raw("SELECT * FROM cat"); //sample query using raw 
+		return DB::raw("SELECT * FROM cat"); 
+		//sample query using raw 
 		// raw function can execute any query provided by the developer
 		// take note that data should be sanitize, raw function does not sanitize data
 	}
