@@ -219,7 +219,7 @@ Yes I'm reinventing the wheel, another piece of shit
 
 5. ***Database Handler*** <br>
    located at - core/database.php <br>
-   1. Select statements 
+   A. Select statements 
    ```php
    <?php
    	use Core\Database as DB;
