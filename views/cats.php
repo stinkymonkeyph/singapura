@@ -18,4 +18,8 @@
 	<?php foreach($cat_filtered as $cat): ?>
 		<p class="head-body-description"><?php echo $cat['name']; ?></p>
 	<?php endforeach; ?>
+	<b><p class="head-body">Join Result</p></b>
+	<?php foreach($join as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['cat'].' a '.$cat['breed']; ?></p>
+	<?php endforeach; ?>
 <?php endblock('content') ?>

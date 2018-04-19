@@ -36,7 +36,7 @@ class Database
    private function set_array($key_value)
   {
       self::$query = self::$query.' SET ';
-      $counter = 0 ;
+      $counter = 0;
       foreach($key_value as $key => $value)
       {
           self::$query = self::$query.$key.' = :'.$key.'_update';
@@ -121,7 +121,6 @@ class Database
           }
           $counter++;
       }
-
       return new static;
   }
 
@@ -257,6 +256,15 @@ class Database
       return new static;
 	}
 
+  public function join($table, $column_one, $column_two)
+  {
+      self::$query = self::$query . ' LEFT JOIN '
+                    .$table. ' ON ' .$column_one. ' = '
+                    .$column_two. ' ';
+      return new static ;
+  }
+
+  // end statements section
 	public function save()
 	{
        $stmt = self::prepare_statement();

@@ -28,7 +28,7 @@ class View
 
 	public function render_error($errors)
 	{
-		self::render('error',$errors, 'error');
+		self::render('error', $errors, 'error');
 	}
 
 	private function append_view_prefix($view_file)
