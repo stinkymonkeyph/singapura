@@ -61,7 +61,7 @@ class CatController
 
 	public function update_cat()
 	{
- 		DB::update(Cat::table)->set('name','alisha')->where('name', 'kanye')->execute(); 
+ 		DB::update(Cat::table)->set('name','alisha')->where('name', 'kanye')->execute();
 	}
 
 	public function delete_cat()
