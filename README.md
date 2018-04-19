@@ -226,8 +226,16 @@ Yes I'm reinventing the wheel, another piece of shit
 
    	$select_all = DB::select()->from('cat');
    	$select_one = DB::select('name')->from('cat')->where('name', 'ashley')->execute();
-   	$select_with_attributes = DB::select(['id','name'])->from('cat');
-   ``` 
+   	$select_with_attributes = DB::select(['id','name'])->from('cat');	
+
+    B. Insert Statements
+    ```php
+    <?php 
+    use Core\Database as DB;
+
+    $insert_single = DB::insert()->into('cat')->columns('name')->values('kanye')->save();
+    $insert_array = DB::insert()->into('cat')->columns(['name', 'breed_id'])->values(['ashley',1])->save();
+    ``` 
 
 # Special Thanks
 
