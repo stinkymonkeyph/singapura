@@ -245,12 +245,17 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
     $update_simple = DB::update('cat')->set('name','alisha')->where('name','kanye')->execute();
     ```
-    E. AND Statements
+    E. Multiple Where Statements
+    ```php
+    <?php 
+    *** SOON TO UPDATE ***
+    ```
+    F. AND Statements
     ```php
     <?php
     *** SOON TO UPDATE *** 
     ```
-    F. JOIN Statements
+    G. JOIN Statements
     ```php
     <?php
     *** SOON TO UPDATE *** 
