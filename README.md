@@ -276,12 +276,26 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     F. AND Statements
     ```php
     <?php
-    *** SOON TO UPDATE *** 
+    use Core\Database as DB;
+    $single_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')->get();
+    $multiple_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
+    				->and('name', 'kittie')->get();
     ```
-    G. JOIN Statements
+    G. OR Statements
     ```php
     <?php
-    *** SOON TO UPDATE *** 
+    use Core\Database as DB;
+    $single_or = DB::select()->from('cat')->where('name', 'alisha')->or('name', 'kanye')->get();
+    $multiple_or = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
+    			   ->or('name', 'kittie')->get();
+    ```
+    H. JOIN Statements
+    ```php
+    <?php
+    use Core\Database as DB;
+
+    $select_join = DB::select(['cat.name as cat', 'breed.name as breed'])->from('cat')
+    			   ->join('breed', 'cat.breed_id', 'breed.id')->get();
     ```
 # Special Thanks
 
