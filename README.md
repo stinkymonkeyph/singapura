@@ -218,15 +218,17 @@ Yes I'm reinventing the wheel, another piece of shit
   	```
 
 5. ***Database Handler*** <br>
-   located at - core/database.php <br>
+   located at - core/database.php <br> <br>
    A. Select statements 
    ```php
    <?php
    	use Core\Database as DB;
+
    	$select_all = DB::select()->from('cat');
    	$select_one = DB::select('name')->from('cat')->where('name', 'ashley')->execute();
    	$select_with_attributes = DB::select(['id','name'])->from('cat');
    ``` 
+
 # Special Thanks
 
 > **Adam Shaw** for creating phpti, thank you for making template inheritance simplier <br>
