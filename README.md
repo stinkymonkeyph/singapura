@@ -251,10 +251,16 @@ Yes I'm reinventing the wheel, another piece of shit
 
     $update_simple = DB::update('cat')->set('name','alisha')->where('name','kanye')->execute();
     ```
-    E. SQL Statements using AND <br>
-    *** SOON TO UPDATE *** <br>
+    E. SQL Statements using AND 
+    ```php
+    <?php
+    *** SOON TO UPDATE *** 
+    ```
     F. JOIN Statements
-    *** SOON TO UPDATE *** <br>
+    ```php
+    <?php
+    *** SOON TO UPDATE *** 
+    ```
 # Special Thanks
 
 > **Adam Shaw** for creating phpti, thank you for making template inheritance simplier <br>
