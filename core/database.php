@@ -175,8 +175,6 @@ class Database
 
 	public function get()
 	{  
-      echo '<br>'.self::$query;
-      self::remove_extra_comma();
     	$stmt = self::$conn->prepare(self::$query);
     	foreach(self::$bind as $key => $value)
     	{
@@ -188,13 +186,6 @@ class Database
       self::reset_has_flags();
     	return $result;
 	}
-
-  private function remove_extra_comma()
-  {
-      $query_size = sizeof(self::$query);
-      if(self::$query[$query_size] === ',')
-        self::$query = substr(self::$query, 0, ($query_size-1)); 
-  }
 
 	public function insert()
 	{

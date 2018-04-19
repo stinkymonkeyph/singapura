@@ -255,10 +255,10 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 	// instead use where()->and()->and() if dealing with multiple and 
 	// statements with same column names
     $where_and = DB::select()->from('cat')->where_and(
-    	[
-    		'name' => 'ashley',
-    		'breed_id' = 1
-    	]
+		[
+			'name' => 'ashley',
+			'breed_id' = 1
+		]
     )->get();
 
     // where_or function only works with different attribute names
