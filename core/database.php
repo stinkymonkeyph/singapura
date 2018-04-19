@@ -26,14 +26,14 @@ class Database
       return new static;
   }
 
-   private function set_single($key, $value)
+  private function set_single($key, $value)
   {
       self::$query = self::$query.' SET '.$key.' =:'.$key.'_update';
       self::bind_set($key.'_update', $value);
       return new static;
   }
 
-   private function set_array($key_value)
+  private function set_array($key_value)
   {
       self::$query = self::$query.' SET ';
       $counter = 0;
@@ -100,14 +100,14 @@ class Database
     	return new static;
   }
 
- 	 private function where_single($key, $value)
+ 	private function where_single($key, $value)
 	{
     	self::$query = self::$query.' WHERE '.$key.' =:'.$key;
     	self::bind_set($key, $value);
     	return new static;
 	}
 
-   private function where_array($key_value)
+  private function where_array($key_value)
   {
       self::$query = self::$query.' WHERE ' ;
       $counter = 0;
@@ -150,7 +150,7 @@ class Database
         return new static;
   }
 
-	 private function bind_set($key, $value)
+	private function bind_set($key, $value)
 	{
     	self::$bind[':'.$key] = self::sanitize_data($value);
     	return new static;
@@ -165,7 +165,7 @@ class Database
 	}
 
 	public function get()
-	{
+	{  
     	$stmt = self::$conn->prepare(self::$query);
     	foreach(self::$bind as $key => $value)
     	{
@@ -190,13 +190,13 @@ class Database
 	    return new static;
 	}
 
-   private function column_single($column)
+  private function column_single($column)
   {
       self::$query = self::$query.'('.$column.')';
       return new static;
   }
 
-   private function column_array($columns)
+  private function column_array($columns)
   {
       self::$query = self::$query.'(';
       $counter = 0;
@@ -222,7 +222,7 @@ class Database
       return new static;    
   }
 
-   private function values_single($value)
+  private function values_single($value)
   {
       self::$query = self::$query.' VALUES(?)';
       self::$bind[] = self::sanitize_data($value);
@@ -230,7 +230,7 @@ class Database
       return new static;
   }
 
-   private function values_array($values)
+  private function values_array($values)
   {
       self::$query = self::$query.' VALUES(';
       $counter = 0;
@@ -256,9 +256,17 @@ class Database
       return new static;
 	}
 
+  public function raw($raw)
+  {
+      //using raw function is dangerous, sanitize your data
+      return self::$conn->query($raw);
+  }
+
   public function join($table, $column_one, $column_two)
   {
-      self::$query = self::$query . ' LEFT JOIN '
+      //select(['table.column_name'])->from('table_one')
+      //->join('table_two', 'table_one.column_one', 'table_two.column_two')
+      self::$query = self::$query . ' JOIN '
                     .$table. ' ON ' .$column_one. ' = '
                     .$column_two. ' ';
       return new static ;
