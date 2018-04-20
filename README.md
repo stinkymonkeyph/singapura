@@ -327,8 +327,11 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
   	```php
   	<?php
   	...
-  	// Render Template
-	Core\View::render_template();
+  	/**
+		Make Application
+		/core/Singapura.php
+	**/
+	Core\Singapura::make_app();
   	...
   	```
 
