@@ -204,12 +204,14 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
 		public function select_or()
 		{
-			return DB::select()->from(Cat::table)->where('name', 'ashley')->or('name', 'tom')->or('name', 'kittie')->get();
+			return DB::select()->from(Cat::table)->where('name', 'ashley')
+				   ->or('name', 'tom')->or('name', 'kittie')->get();
 		}
 
 		public function select_and()
 		{
-			return DB::select()->from(Cat::table)->where('name', 'ashley')->and('name', 'tom')->and('name', 'kittie')->get();
+			return DB::select()->from(Cat::table)->where('name', 'ashley')
+				   ->and('name', 'tom')->and('name', 'kittie')->get();
 		}
 
 		public function where_and()
