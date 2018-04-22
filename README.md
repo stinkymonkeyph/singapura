@@ -337,7 +337,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
 5. ***Database Handler*** <br>
    located at - core/database.php <br> <br>
-    A. Select Statements 
+    **A. Select Statements** 
     ```php
     <?php
     use Core\Database as DB;
@@ -346,7 +346,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
    	$select_one = DB::select('name')->from('cat')->where('name', 'ashley')->execute();
    	$select_with_attributes = DB::select(['id','name'])->from('cat');	
    	```
-    B. Insert Statements
+    **B. Insert Statements**
     ```php
     <?php 
     use Core\Database as DB;
@@ -354,7 +354,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     $insert_single = DB::insert()->into('cat')->columns('name')->values('kanye')->save();
     $insert_array = DB::insert()->into('cat')->columns(['name', 'breed_id'])->values(['ashley',1])->save();
     ``` 
-    C. Delete Statements
+    **C. Delete Statements**
     ```php
     <?php 
     use Core\Database as DB;
@@ -362,14 +362,14 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     $delete_all = DB::delete()->from('cat')->execute();
     $delete_with_condition = DB::delete()->from('cat')->where('name', 'alisha')->execute();
     ```
-    D. Update Statements
+    **D. Update Statements**
     ```php
     <?php 
     use Core\Database as DB;
 
     $update_simple = DB::update('cat')->set('name','alisha')->where('name','kanye')->execute();
     ```
-    E. Multiple Where Statements
+    **E. Multiple Where Statements**
     ```php
     <?php 
     use Core\Database as DB;
@@ -397,7 +397,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     )->get();
     
     ```
-    F. AND Statements
+    **F. AND Statements**
     ```php
     <?php
     use Core\Database as DB;
@@ -406,7 +406,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     $multiple_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
     				->and('name', 'kittie')->get();
     ```
-    G. OR Statements
+    **G. OR Statements**
     ```php
     <?php
     use Core\Database as DB;
@@ -415,7 +415,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     $multiple_or = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
     			   ->or('name', 'kittie')->get();
     ```
-    H. JOIN Statements
+    **H. JOIN Statements**
     ```php
     <?php
     use Core\Database as DB;

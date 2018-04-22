@@ -2,7 +2,6 @@
 
 require __DIR__.'/core/autoloader.php';
 
-
 use Core\Maker;
 
 $function = $argv[1];
