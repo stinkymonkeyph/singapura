@@ -422,6 +422,9 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
     $select_join = DB::select(['cat.name as cat', 'breed.name as breed'])->from('cat')
     			   ->join('breed', 'cat.breed_id', 'breed.id')->get();
+   	$multiple_join = DB::select(['cat.name as cat', 'owner.name as owner'])->from(Cat::table)
+				     ->join('cat_owner', 'cat_owner.cat_id', 'cat.id')
+					 ->join('owner', 'owner.id',  'cat_owner.owner_id')->get();
     ```
 # Special Thanks
 

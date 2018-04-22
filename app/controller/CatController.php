@@ -24,7 +24,7 @@ class CatController
  		$and = self::select_and();
  		$where_and = self::where_and();
  		$where_or = self::where_or();
- 		
+ 		$multiple_join = self::cat_owner_join();
  		//self::insert_raw();
  		//self::insert_cat();
  		//self::delete_cat();
@@ -40,7 +40,8 @@ class CatController
 				'or' => $or,
 				'and' => $and,
 				'where_and' => $where_and,
-				'where_or' => $where_or
+				'where_or' => $where_or,
+				'multiple_join' => $multiple_join
 			]
 		);
 	}
@@ -126,6 +127,15 @@ class CatController
 	public function insert_cat()
 	{
 		DB::insert()->into(Cat::table)->columns(['name', 'breed_id'])->values(['kanye', 1])->save();
+
+		DB::insert()->into('cat_owner')->columns(['cat_id', 'owner_id'])->values([1,1])->save();
+	}
+
+	public function cat_owner_join()
+	{
+		return DB::select(['cat.name as cat', 'owner.name as owner'])->from(Cat::table)
+		->join('cat_owner', 'cat_owner.cat_id', 'cat.id')
+		->join('owner', 'owner.id',  'cat_owner.owner_id')->get();
 	}
 
 }

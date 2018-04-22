@@ -114,7 +114,13 @@ class Router
 			{
 				$class_function = self::extract_class_function($method);
 				$class = self::append_controller_prefix($class_function[0]);
+				if(!class_exists($class))
+					$class = self::append_model_prefix($class_function[0]);
+				if(!class_exists($class))
+					throw new Exception("Router Error: Class is not found, please check your spelling");
 				$function = $class_function[1];
+				if(!method_exists($class, $function))
+					throw new Exception("Router Error: Function is not found, please check your spelling");
 				self::execute_class_function($class, $function);
 			}
 		}
@@ -128,12 +134,17 @@ class Router
 
 	private function append_controller_prefix($class)
 	{
-		return 'App\Controller\\'. $class;
+		return 'App\Controller\\'.$class;
+	}
+
+	private function append_model_prefix($class)
+	{
+		return 'App\Model\\'.$class;
 	}
 
 	private function execute_class_function($class, $function)
 	{
-		$class::$function(); 
+		$class::$function();
 	}
 
 	public function load_routes()

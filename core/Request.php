@@ -1,7 +1,6 @@
 <?php 
 
 namespace Core;
-use Core\Session;
 
 class Request extends Session
 {
@@ -22,7 +21,7 @@ class Request extends Session
 		}
 
 	}
-
+	
 	public function is_valid_token($token)
 	{
 		return self::token_exists($token);

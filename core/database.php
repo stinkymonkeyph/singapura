@@ -29,22 +29,22 @@ class Database
 
   private function set_single($key, $value)
   {
-      self::$query = self::$query.' SET '.$key.' =:'.$key.'_update';
+      self::$query .= ' SET '.$key.' =:'.$key.'_update';
       self::bind_set($key.'_update', $value);
       return new static;
   }
 
   private function set_array($key_value)
   {
-      self::$query = self::$query.' SET ';
+      self::$query .= ' SET ';
       $counter = 0;
       foreach($key_value as $key => $value)
       {
-          self::$query = self::$query.$key.' = :'.$key.'_update';
+          self::$query .= $key.' = :'.$key.'_update';
           self::bind_set($key.'_update', $value);
           if($counter+1 < count($key_value))
           {
-             self::$query = self::$query.', ';
+             self::$query .= ', ';
           }
       }
   }
@@ -76,16 +76,16 @@ class Database
       $counter = 0;
     	if($attributes === null)
    	  {
-        self::$query = self::$query.' * ';
+        self::$query .= ' * ';
     	}
       else
     	{
           foreach($attributes as $column => $value)
           {
-              self::$query = self::$query.$value;
+              self::$query .= $value;
               if($counter+1 < count($attributes))
               {
-                self::$query = self::$query.', ';
+                self::$query .= ', ';
               }
               $counter++;
           }
@@ -97,30 +97,30 @@ class Database
   public function from($table_name)
   {    
         
-	 	  self::$query = self::$query.' FROM '.$table_name;
+	 	  self::$query .= ' FROM '.$table_name;
     	return new static;
   }
 
  	public function where($key, $value)
 	{
    
-      self::$query = self::$query . ' WHERE ';
-    	self::$query = self::$query.$key.' =:'.$key.' ';
+      self::$query .=  ' WHERE ';
+    	self::$query .= $key.' =:'.$key.' ';
     	self::bind_set($key, $value);
     	return new static;
 	}
 
   public function where_or($key_value)
   {
-      self::$query = self::$query.' WHERE ' ;
+      self::$query .= ' WHERE ' ;
       $counter = 0;
       foreach($key_value as $key => $value)
       {
-          self::$query = self::$query.$key.' =:'.$key.' ';
+          self::$query .= $key.' =:'.$key.' ';
           self::bind_set($key, $value);
           if($counter+1 < count($key_value))
           {
-              self::$query = self::$query.' OR ';
+              self::$query .= ' OR ';
           }
           $counter++;
       }
@@ -129,15 +129,15 @@ class Database
 
   public function where_and($key_value)
   {
-        self::$query = self::$query.' WHERE ';
+        self::$query .= ' WHERE ';
         $counter = 0;
         foreach($key_value as $key => $value)
         {
-            self::$query = self::$query.$key.' =:'.$key.' ';
+            self::$query .= $key.' =:'.$key.' ';
             self::bind_set($key, $value);
             if($counter+1 < count($key_value))
             {
-                self::$query = self::$query.' AND ';
+                self::$query .= ' AND ';
             }
             $counter++;
         }
@@ -153,8 +153,8 @@ class Database
 	public function and($key, $value)
 	{
       $prefix = self::random_key_prefix();
- 	    self::$query = self::$query.' AND ';
-    	self::$query = self::$query.$key.' = :'.$prefix.$key;
+ 	    self::$query .= ' AND ';
+    	self::$query .= $key.' = :'.$prefix.$key;
     	self::bind_set($prefix.$key, $value);
     	return new static;
 	}
@@ -167,8 +167,8 @@ class Database
   public function or($key, $value)
   {
       $prefix = self::random_key_prefix();
-      self::$query = self::$query . ' OR ';
-      self::$query = self::$query.$key.' = :'.$prefix.$key;
+      self::$query .=  ' OR ';
+      self::$query .= $key.' = :'.$prefix.$key;
       self::bind_set($prefix.$key, $value);
       return new static;
   }
@@ -196,30 +196,30 @@ class Database
 
 	public function into($table_name)
 	{
-	    self::$query = self::$query.' INTO '.$table_name;
+	    self::$query .= ' INTO '.$table_name;
 	    return new static;
 	}
 
   private function column_single($column)
   {
-      self::$query = self::$query.'('.$column.')';
+      self::$query .= '('.$column.')';
       return new static;
   }
 
   private function column_array($columns)
   {
-      self::$query = self::$query.'(';
+      self::$query .= '(';
       $counter = 0;
       foreach($columns as $column)
       {
-          self::$query = self::$query.$column;
+          self::$query .= $column;
           if($counter+1 < count($columns))
           {
-            self::$query = self::$query.',';
+            self::$query .= ',';
           }
           $counter++;
       }
-      self::$query = self::$query.')';
+      self::$query .= ')';
       return new static;
   }
 
@@ -234,7 +234,7 @@ class Database
 
   private function values_single($value)
   {
-      self::$query = self::$query.' VALUES(?)';
+      self::$query .= ' VALUES(?)';
       self::$bind[] = self::sanitize_data($value);
 
       return new static;
@@ -242,19 +242,19 @@ class Database
 
   private function values_array($values)
   {
-      self::$query = self::$query.' VALUES(';
+      self::$query .= ' VALUES(';
       $counter = 0;
       foreach($values as $value)
       {
           self::$bind[] = self::sanitize_data($value);
-          self::$query = self::$query.'?';
+          self::$query .= '?';
           if($counter+1 < count($values))
           {
-              self::$query = self::$query.',';
+              self::$query .= ',';
           }
           $counter++;
       }
-      self::$query = self::$query.') ';
+      self::$query .= ') ';
   }
 
 	public function values($values)
@@ -272,13 +272,39 @@ class Database
       return self::$conn->query($raw);
   }
 
-  public function join($table, $column_one, $column_two)
+  private function join_append($column_one, $column_two)
   {
-      //select(['table.column_name'])->from('table_one')
-      //->join('table_two', 'table_one.column_one', 'table_two.column_two')
-      self::$query = self::$query . ' JOIN '
-                    .$table. ' ON ' .$column_one. ' = '
-                    .$column_two. ' ';
+      self::$query .= ' ON '.$column_one.' = '.$column_two.' ';
+      return new static;
+  }
+
+  private function left_join($table, $column_one, $column_two)
+  {
+      self::$query .= ' LEFT JOIN '.$table.' ';
+      self::join_append($column_one, $column_two);
+      return new static;
+  }
+
+  private function right_join($table, $column_one, $column_two)
+  {
+      self::$query .=  ' RIGHT JOIN '.$table.' ';
+      self::join_append($column_one, $column_two);
+      return new static;
+  }
+
+  private function cross_join($table, $column_one = null, $column_two = null)
+  {
+      self::$query .=  ' CROSS JOIN '.$table.' ';
+      if(!is_null($column_one) && !is_null($column_two))
+        self::join_append($column_one, $column_two); 
+      return new static;
+  }
+
+  public function join($table, $column_one = null, $column_two = null)
+  {
+      self::$query .= ' JOIN '.$table.' ';
+      if(!is_null($column_one) && !is_null($column_two))
+        self::join_append($column_one, $column_two);
       return new static ;
   }
 

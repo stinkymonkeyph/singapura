@@ -38,4 +38,8 @@
 	<?php foreach($where_or as $cat): ?>
 		<p class="head-body-description"><?php echo $cat['name']; ?></p>
 	<?php endforeach; ?>
+	<b><p class="head-body">Multiple Join</p></b>
+	<?php foreach($multiple_join as $cat): ?>
+		<p class="head-body-description"><?php echo $cat['cat'] .' is own by ' . $cat['owner']; ?></p>
+	<?php endforeach; ?>
 <?php endblock('content') ?>
