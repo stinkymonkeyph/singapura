@@ -1,5 +1,5 @@
 # Singapura
-***A micro php framework***
+**A micro php framework**
 > <br>
 > <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/who.jpg"></img>
 > <br>
@@ -63,7 +63,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
  # Code Snippets - Usage - Manual - Description
 
- 1. ***Configuration*** <br>
+ 1. **Configuration** <br>
  	located at - core/config.php <br>
  	here you set the database configuration for your application
  	```php
@@ -81,7 +81,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 		  public static $debugging = True; //True or False  
 	}
 
- 2. ***Routing*** <br>
+ 2. **Routing** <br>
  	located at - routes/routes.php <br>
  	```php
  	<?php
@@ -127,7 +127,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 		echo $data['data'] .'<br>';
 	});
 
-3. ***Controllers*** <br>
+3. **Controllers** <br>
 	located at - controller/your_controller
 	```php
 	<?php
@@ -264,7 +264,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
 	}
 
-4. ***templating/view*** <br>
+4. **templating/view** <br>
    Uses phpti, for php template inheritance <br>
    phpti website - http://arshaw.com/phpti/ <br>
    Template is rendered in index.php - located at public/index.php <br>
@@ -272,7 +272,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
    Below is an example of a view structure <br>
    All files is located at /views
 
-   ***master.php*** - the base template, located at /views/layout
+   **master.php** - the base template, located at /views/layout
 
    ```html 
    <!DOCTYPE html>
@@ -287,7 +287,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 	</html>
 	```
 
-  	***header.php*** - included in the base template ***master.php*** 
+  	**header.php** - included in the base template **master.php** 
 
   	```html
 	<link href="https://fonts.googleapis.com/css?family=Anton|Work+Sans" rel="stylesheet">
@@ -295,7 +295,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 	<link rel="stylesheet" type="text/css" href="<?php Helper::link_asset('asset/css/app.css') ?>">
   	```
 
-  	***body.php*** - includes the base template
+  	**body.php** - includes the base template
 
   	```html
   	<?php include_template('layout.master') ?>
@@ -322,7 +322,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 	<?php endblock('content') ?>
   	```
 
-  	***index.php*** code snippet, renders the template
+  	**index.php** code snippet, renders the template
 
   	```php
   	<?php
@@ -335,7 +335,7 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
   	...
   	```
 
-5. ***Database Handler*** <br>
+5. **Database Handler** <br>
    located at - core/database.php <br> <br>
     **A. Select Statements** 
     ```php
