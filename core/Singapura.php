@@ -12,15 +12,15 @@ class Singapura
 	public function __construct()
 	{
 			new Session(); //start new session
-			$this->$request = new Request(); //create request
-			$this->$router = new Router($this->$request); //initialize router
+			$this->request = new Request(); //create request
+			$this->router = new Router($this->request); //initialize router
 	}
 	
 	public function make()
 	{
 		try
 		{
-			$this->$router->load_routes(); // load user routes		
+			$this->router->load_routes(); // load user routes		
 		}
 		catch(Throwable $err)
 		{

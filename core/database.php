@@ -21,7 +21,6 @@ class Database
   public function update($table)
   {
       //update()->set()->where()->execute();
-      //self::connect_db();
       self::$query = 'UPDATE '.$table ;
 
       return new static;
@@ -61,7 +60,6 @@ class Database
   public function delete()
   {
         //delete()->from(table_name)->where(column, value)->execute();
-        //self::connect_db();
         self::$query = 'DELETE ';
 
         return new static;
@@ -70,7 +68,6 @@ class Database
 	public function select($attributes = null)
 	{
       //select(attributes)->from(table_name)->where(column, value)->get();
-		  //self::connect_db();
    	  self::$query = 'SELECT ';
     	
       $counter = 0;
@@ -183,7 +180,7 @@ class Database
     	$stmt->execute();
     	$result = $stmt->fetchAll();
       self::reset_bind();
-      self::reset_has_flags();
+       
     	return $result;
 	}
 
@@ -305,7 +302,7 @@ class Database
       self::$query .= ' JOIN '.$table.' ';
       if(!is_null($column_one) && !is_null($column_two))
         self::join_append($column_one, $column_two);
-      return new static ;
+      return new static; ;
   }
 
   // end statements section
@@ -314,7 +311,7 @@ class Database
        $stmt = self::prepare_statement();
        $stmt->execute(self::$bind);
        self::reset_bind();	
-       self::reset_has_flags();
+        
 	}
 
   public function execute()
@@ -326,7 +323,7 @@ class Database
       }
       $result = $stmt->execute();
       self::reset_bind();
-      self::reset_has_flags();
+       
       return $result; 
   }
 
@@ -343,11 +340,6 @@ class Database
   private function sanitize_data($data)
   {
       return htmlentities($data);
-  }
-
-  private function reset_has_flags()
-  {
-      self::$has_where = False;
   }
 
 }
