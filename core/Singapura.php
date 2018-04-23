@@ -6,14 +6,12 @@ use Throwable;
 class Singapura
 {
 
-	private $request;
 	private $router;
 
 	public function __construct()
 	{
 			new Session(); //start new session
-			$this->request = new Request(); //create request
-			$this->router = new Router($this->request); //initialize router
+			$this->router = new Router(new Request()); //initialize router
 	}
 	
 	public function make()
