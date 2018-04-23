@@ -8,7 +8,7 @@ class Request extends Session
 	private static $request_type;
 	private static $csrf_token;
 
-	public function get_request()
+	public function __construct()
 	{
 		$uri = $_SERVER['REQUEST_URI'];
 		$request_uri = explode('?', $uri, 2);

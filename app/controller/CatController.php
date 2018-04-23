@@ -25,6 +25,7 @@ class CatController
  		$where_and = self::where_and();
  		$where_or = self::where_or();
  		$multiple_join = self::cat_owner_join();
+ 		$cross_join = self::cat_cross_join();
  		//self::insert_raw();
  		//self::insert_cat();
  		//self::delete_cat();
@@ -41,7 +42,8 @@ class CatController
 				'and' => $and,
 				'where_and' => $where_and,
 				'where_or' => $where_or,
-				'multiple_join' => $multiple_join
+				'multiple_join' => $multiple_join,
+				'cross_join' => $cross_join
 			]
 		);
 	}
@@ -136,6 +138,12 @@ class CatController
 		return DB::select(['cat.name as cat', 'owner.name as owner'])->from(Cat::table)
 		->join('cat_owner', 'cat_owner.cat_id', 'cat.id')
 		->join('owner', 'owner.id',  'cat_owner.owner_id')->get();
+	}
+
+	public function cat_cross_join()
+	{
+		return DB::select(['cat.name as cat', 'breed.name as breed'])->from(Cat::table)
+		->cross_join('breed')->get();
 	}
 
 }

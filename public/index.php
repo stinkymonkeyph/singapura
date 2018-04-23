@@ -16,8 +16,8 @@ require __DIR__.'/../core/autoloader.php';
 	Make Application
 	/core/Singapura.php
 **/
-Core\Singapura::make_app();
-
+$app = new Core\Singapura();
+$app->make();
 
 ?>
 

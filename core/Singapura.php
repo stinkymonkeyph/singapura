@@ -5,17 +5,22 @@ use Throwable;
 
 class Singapura
 {
-	public function make_app()
+
+	private $request;
+	private $router;
+
+	public function __construct()
+	{
+			new Session(); //start new session
+			$this->$request = new Request(); //create request
+			$this->$router = new Router($this->$request); //initialize router
+	}
+	
+	public function make()
 	{
 		try
 		{
-			new Session(); //start new session
-
-			$request = new Request();
-			$request->get_request(); // get request
-
-			$router = new Router($request); //initialize router
-			$router->load_routes(); // load user routes		
+			$this->$router->load_routes(); // load user routes		
 		}
 		catch(Throwable $err)
 		{

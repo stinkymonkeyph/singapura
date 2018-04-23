@@ -12,16 +12,16 @@ class Database
 	private static $query;
   private static $has_where = False;
 
-	 private function connect_db()
-	{
-  		$conn = new DatabaseConnector();
-  		self::$conn = $conn->db_handler();
-	}
+  public function __construct()
+  {
+        $conn = new DatabaseConnector();
+        self::$conn = $conn->db_handler();
+  }
 
   public function update($table)
   {
       //update()->set()->where()->execute();
-      self::connect_db();
+      //self::connect_db();
       self::$query = 'UPDATE '.$table ;
 
       return new static;
@@ -61,7 +61,7 @@ class Database
   public function delete()
   {
         //delete()->from(table_name)->where(column, value)->execute();
-        self::connect_db();
+        //self::connect_db();
         self::$query = 'DELETE ';
 
         return new static;
@@ -70,7 +70,7 @@ class Database
 	public function select($attributes = null)
 	{
       //select(attributes)->from(table_name)->where(column, value)->get();
-		  self::connect_db();
+		  //self::connect_db();
    	  self::$query = 'SELECT ';
     	
       $counter = 0;
@@ -278,21 +278,21 @@ class Database
       return new static;
   }
 
-  private function left_join($table, $column_one, $column_two)
+  public function left_join($table, $column_one, $column_two)
   {
       self::$query .= ' LEFT JOIN '.$table.' ';
       self::join_append($column_one, $column_two);
       return new static;
   }
 
-  private function right_join($table, $column_one, $column_two)
+  public function right_join($table, $column_one, $column_two)
   {
       self::$query .=  ' RIGHT JOIN '.$table.' ';
       self::join_append($column_one, $column_two);
       return new static;
   }
 
-  private function cross_join($table, $column_one = null, $column_two = null)
+  public function cross_join($table, $column_one = null, $column_two = null)
   {
       self::$query .=  ' CROSS JOIN '.$table.' ';
       if(!is_null($column_one) && !is_null($column_two))
