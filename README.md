@@ -19,10 +19,6 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 
 # Folder Structures
 
-> <br>
-> <img height="300px" src="https://github.com/stinkymonkeyph/singapura/blob/master/tree.JPG"></img>
-> <br>
-
 1. app
 	* Contains the folders controller and model
 
