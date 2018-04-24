@@ -1,8 +1,8 @@
 <?php 
 
 // Default namespace used
-use Core\Router as Route;
-use Core\View;
+use Core\Singapura\Router as Route;
+use Core\Singapura\View;
 
 // Declare all routes below
 

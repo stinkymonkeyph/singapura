@@ -1,9 +1,9 @@
 <?php 
 
-namespace Core;
+namespace Core\Singapura;
 
-use Core\View;
-use Core\Config;
+use Core\Singapura\View;
+use Core\Singapura\Config;
 use Throwable;
 
 class Error

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Singapura;
 use Throwable; 
 
 class Singapura
@@ -14,7 +14,7 @@ class Singapura
 			$this->router = new Router(new Request()); //initialize router
 	}
 	
-	public function make()
+	public function load()
 	{
 		try
 		{

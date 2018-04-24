@@ -6,12 +6,11 @@ class Autoloader
 
 	public static function autoload_register( $class_name ) 
 	{
-		
 		$paths = array(
-			'/../app/controller/',
-			'/../app/model/',
-			'/../core/',
-			'/../core/external/'
+			'/../../app/controller/',
+			'/../../app/model/',
+			'/../../core/singapura/',
+			'/../../core/external/'
 		);
 
 		foreach($paths as $path)
@@ -24,13 +23,10 @@ class Autoloader
 			{
 				require $file;
 			}
-			
 		}
-	
 	}
 }
 
 spl_autoload_register('Autoloader::autoload_register');
-
 
 ?>

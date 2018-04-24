@@ -2,9 +2,9 @@
 
 namespace Core;
 
-use Core\Config;
+use Core\Singapura\Config;
 use PDO;
-use Core\Error;
+use Core\Singapura\Error;
 use Exception;
 
 class DatabaseConnector

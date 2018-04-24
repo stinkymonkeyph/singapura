@@ -1,10 +1,11 @@
 <?php 
 
-namespace Core;
-use Core\Session;
-use Core\Error;
+namespace Core\Singapura;
+
+use Core\Singapura\Session;
+use Core\Singapura\Error;
+use Core\Singapura\Request;
 use Exception;
-use Core\Request;
 
 class Router
 {
@@ -149,7 +150,7 @@ class Router
 
 	public function load_routes()
 	{
-		include __DIR__.'/../routes/routes.php';
+		include __DIR__.'/../../routes/routes.php';
 		if(!self::$path_found)
 			throw new Exception('Router Error: Invalid route');
 	}

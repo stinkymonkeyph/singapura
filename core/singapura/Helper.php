@@ -1,5 +1,5 @@
 <?php 
-use Core\Session;
+use Core\Singapura\Session;
 
 class Helper
 {

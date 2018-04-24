@@ -1,6 +1,6 @@
 <?php 
 
-require __DIR__.'/core/autoloader.php';
+require __DIR__.'/core/singapura/autoloader.php';
 
 use Core\Maker;
 
@@ -21,12 +21,13 @@ function run_server($host_port)
 	if($host_port == null)
 		$host_port = "localhost:8000";
 	echo "\nListening on ".$host_port."\n" ;
-	exec('php -S '. $host_port.' -t public' );	
+	exec('php -S '. $host_port.' -t public');	
 }
 
 function create_controller($class_name)
 {
-	$create = Maker::create_controller($class_name);
+	$maker = new Maker();
+	$create = $maker->create_controller($class_name);
 	if($create)
 	{
 		echo "Successfully created controller";
@@ -39,7 +40,16 @@ function create_controller($class_name)
 
 function create_model($class_name)
 {
-	// create model
+	$maker = new Maker();
+	$create = $maker->create_model($class_name);
+	if($create)
+	{
+		echo "Successfully created model";
+	}
+	else
+	{
+		echo "File Already Exists";
+	}
 }
 
 ?>

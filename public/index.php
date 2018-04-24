@@ -10,14 +10,14 @@
 	Autoload classes
 	/core/Autoloader.php
 **/
-require __DIR__.'/../core/autoloader.php';
+require __DIR__.'/../core/singapura/autoloader.php';
 
 /**
 	Make Application
 	/core/Singapura.php
 **/
-$app = new Core\Singapura();
-$app->make();
+$app = new Core\Singapura\Singapura();
+$app->load();
 
 ?>
 

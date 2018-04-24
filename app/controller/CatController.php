@@ -4,9 +4,9 @@
 namespace App\Controller;
 
 // Default namespace used
-use Core\Router;
-use Core\View;
-use Core\Database as DB;
+use Core\Singapura\Router;
+use Core\Singapura\View;
+use Core\Singapura\Database as DB;
 
 // User defined namespace used
 use App\Model\Cat; 
@@ -26,6 +26,7 @@ class CatController
  		$where_or = self::where_or();
  		$multiple_join = self::cat_owner_join();
  		$cross_join = self::cat_cross_join();
+
  		//self::insert_raw();
  		//self::insert_cat();
  		//self::delete_cat();
@@ -129,21 +130,20 @@ class CatController
 	public function insert_cat()
 	{
 		DB::insert()->into(Cat::table)->columns(['name', 'breed_id'])->values(['kanye', 1])->save();
-
 		DB::insert()->into('cat_owner')->columns(['cat_id', 'owner_id'])->values([1,1])->save();
 	}
 
 	public function cat_owner_join()
 	{
 		return DB::select(['cat.name as cat', 'owner.name as owner'])->from(Cat::table)
-		->join('cat_owner', 'cat_owner.cat_id', 'cat.id')
-		->join('owner', 'owner.id',  'cat_owner.owner_id')->get();
+				   ->join('cat_owner', 'cat_owner.cat_id', 'cat.id')
+				   ->join('owner', 'owner.id',  'cat_owner.owner_id')->get();
 	}
 
 	public function cat_cross_join()
 	{
 		return DB::select(['cat.name as cat', 'breed.name as breed'])->from(Cat::table)
-		->cross_join('breed')->get();
+				   ->cross_join('breed')->get();
 	}
 
 }

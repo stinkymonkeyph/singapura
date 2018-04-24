@@ -1,6 +1,6 @@
 <?php 
 
-namespace Core;
+namespace Core\Singapura;
 use Exception;
 
 class View 
@@ -15,8 +15,8 @@ class View
 		if($data !== null)
 			extract($data);
 
-		require_once __DIR__.'/../core/external/template.php'; 
-		require_once __DIR__.'/../core/templatewrapper.php';
+		require_once __DIR__.'/../../core/external/template.php'; 
+		require_once __DIR__.'/../../core/singapura/templatewrapper.php';
 		if($type === null)
 			require_once self::append_view_prefix($view_file);
 		else if($type === 'error')
@@ -33,7 +33,7 @@ class View
 
 	private function append_view_prefix($view_file)
 	{
-		$directory = __DIR__.'/../views/'.
+		$directory = __DIR__.'/../../views/'.
 					 str_replace('.', '/', $view_file).'.php';
 		if(!self::view_exist($directory))
 			throw new Exception('View Error: View file does not exists');
@@ -47,7 +47,7 @@ class View
 
 	private function append_error_view_prefix($view_file)
 	{
-		return __DIR__.'/error/'.$view_file.'.php';
+		return __DIR__.'/../error/'.$view_file.'.php';
 	}
 
 	public function render_template()

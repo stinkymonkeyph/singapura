@@ -1,8 +1,8 @@
 <?php 
 
-namespace Core;
-use Core\Config;
-use Core\DatabaseConnector;
+namespace Core\Singapura;
+use Core\Singapura\Config;
+use Core\Singapura\DatabaseConnector;
 use PDO;
 
 class Database
@@ -10,12 +10,11 @@ class Database
 	private static $conn;
 	private static $bind = array();
 	private static $query;
-  private static $has_where = False;
-
+  
   public function __construct()
   {
-        $conn = new DatabaseConnector();
-        self::$conn = $conn->db_handler();
+      $conn = new DatabaseConnector();
+      self::$conn = $conn->db_handler();
   }
 
   public function update($table)
@@ -59,10 +58,10 @@ class Database
 
   public function delete()
   {
-        //delete()->from(table_name)->where(column, value)->execute();
-        self::$query = 'DELETE ';
+      //delete()->from(table_name)->where(column, value)->execute();
+      self::$query = 'DELETE ';
 
-        return new static;
+      return new static;
   }
 
 	public function select($attributes = null)
@@ -93,14 +92,12 @@ class Database
 
   public function from($table_name)
   {    
-        
 	 	  self::$query .= ' FROM '.$table_name;
     	return new static;
   }
 
  	public function where($key, $value)
 	{
-   
       self::$query .=  ' WHERE ';
     	self::$query .= $key.' =:'.$key.' ';
     	self::bind_set($key, $value);
@@ -126,19 +123,19 @@ class Database
 
   public function where_and($key_value)
   {
-        self::$query .= ' WHERE ';
-        $counter = 0;
-        foreach($key_value as $key => $value)
-        {
-            self::$query .= $key.' =:'.$key.' ';
-            self::bind_set($key, $value);
-            if($counter+1 < count($key_value))
-            {
-                self::$query .= ' AND ';
-            }
-            $counter++;
-        }
-        return new static;
+      self::$query .= ' WHERE ';
+      $counter = 0;
+      foreach($key_value as $key => $value)
+      {
+          self::$query .= $key.' =:'.$key.' ';
+          self::bind_set($key, $value);
+          if($counter+1 < count($key_value))
+          {
+              self::$query .= ' AND ';
+          }
+          $counter++;
+      }
+      return new static;
   }
 
 	private function bind_set($key, $value)
@@ -311,7 +308,6 @@ class Database
        $stmt = self::prepare_statement();
        $stmt->execute(self::$bind);
        self::reset_bind();	
-        
 	}
 
   public function execute()
@@ -329,7 +325,7 @@ class Database
 
   private function prepare_statement()
   {
-     return self::$conn->prepare(self::$query);
+      return self::$conn->prepare(self::$query);
   }
 
   private function reset_bind()

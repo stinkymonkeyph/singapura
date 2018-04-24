@@ -27,13 +27,25 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
 	* Contains the folders controller and model
 
 2. core
-	 * cotains the core files of the framework
-	 	* autoloader
-	 	* router
-	 	* database handler
-	 	* config
+	 * singapura
+	 	* **Contains Core Files**
+	 	* Autoloader
+	 	* Config
+	 	* Database
+	 	* DatabaseConnector
+	 	* Encryption
+	 	* Error
+	 	* Helper
+	 	* Maker
+	 	* Request
+	 	* Router
+	 	* Session
+	 	* Singapura
+	 	* TemplateWrapper
+	 	* View
 	 * external folder
-	 	* contains external scripts/files from other author
+	 	* **contains external scripts/files from other author**
+	 	* Template - phpti
 
 3. public
  	* contains index.php
@@ -55,11 +67,11 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
  1. Run PHP Server - using CLI
  	* php engine run_server
  	* php engine run_server ip:port
+ 2. Create Controller - using CLI
+ 	* php engine create_controller controller_name
 
-> <br>
-> <img height="300px" width="800px" src="https://github.com/stinkymonkeyph/singapura/blob/master/server_cli.JPG"></img>
-> <br>
-
+ 3. Create Model - using CLI
+ 	* php engine create_model model_name
 
  # Code Snippets - Usage - Manual - Description
 
