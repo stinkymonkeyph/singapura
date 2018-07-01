@@ -382,10 +382,6 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     <?php 
     use Core\Database as DB;
 
-    // where_and function only works with different attribute names
-	// where_and function fails if you are comparing two same attributes
-	// instead use where()->and()->and() if dealing with multiple and 
-	// statements with same column names
     $where_and = DB::select()->from('cat')->where_and(
 		[
 			'name' => 'ashley',
@@ -410,9 +406,8 @@ Yes! I'm reinventing the wheel, and it is another piece of shit
     <?php
     use Core\Database as DB;
     
-    $single_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')->get();
-    $multiple_and = DB::select()->from('cat')->where('name', 'alisha')->and('name', 'kanye')
-    				->and('name', 'kittie')->get();
+    $single_and = DB::select()->from('cat')->where('name', 'alisha')->and('breed_id', 2)->get();
+
     ```
     **G. OR Statements**
     ```php
