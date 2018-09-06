@@ -2,7 +2,7 @@
 
 require __DIR__.'/core/singapura/autoloader.php';
 
-use Core\Maker;
+use Core\Singapura\Maker;
 
 $function = $argv[1];
 

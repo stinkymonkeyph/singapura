@@ -15,7 +15,7 @@ class Maker
 	public function create_controller($class_name)
 	{
 		$content = $this->start;
-		$file = __DIR__.'/../app/controller/'.ucwords($class_name).$this->extension;
+		$file = __DIR__.'/../../app/controller/'.ucwords($class_name).$this->extension;
 
 		if(file_exists($file))
 			return false;
@@ -39,7 +39,7 @@ class Maker
 	public function create_model($class_name)
 	{
 		$content = $this->start;
-		$file = __DIR__.'/../app/model/'.ucwords($class_name).$this->extension;
+		$file = __DIR__.'/../../app/model/'.ucwords($class_name).$this->extension;
 
 		if(file_exists($file))
 			return false;

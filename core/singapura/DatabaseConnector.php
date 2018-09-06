@@ -1,6 +1,6 @@
 <?php 
 
-namespace Core;
+namespace Core\Singapura;
 
 use Core\Singapura\Config;
 use PDO;
